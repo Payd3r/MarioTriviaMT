@@ -1,0 +1,32 @@
+Inizio connessione
+uguale a quella chat
+
+Comunicazione:
+m;a;numero / m;i;numero      m=movimento a=avanti  i=indietro conferma a fine domanda/minigioco
+d;numeroMinigioco/domanda    lo invia solo chi inizia la connessione ogni due tiro dadi
+
+if(domanda)
+  fa vedere la domanda e aspetta la risposta
+ else
+  inizia una comunicazione relativa ai minigiochi
+mando movimento se fa giusto o sbagliato
+
+Chiusura connessione
+uguale a quella chat
+
+Domande: 
+1)
+2)
+3)
+4)
+5)
+6)
+7)
+8)
+9)
+10)
+Minigiochi: (video su youtube mario party)
+1)
+2)
+3)
+4)
