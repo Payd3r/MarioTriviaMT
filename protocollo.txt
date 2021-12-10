@@ -70,3 +70,4 @@ Minigiochi:
 	1 vs 1 sasso carta forbice;
 6) Gioco Tris:
 	Tris
+7) snake gioco bonus
