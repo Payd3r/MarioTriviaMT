@@ -15,18 +15,58 @@ Chiusura connessione
 uguale a quella chat
 
 Domande: 
-1)
-2)
-3)
-4)
-5)
-6)
-7)
-8)
-9)
-10)
-Minigiochi: (video su youtube mario party)
-1)
-2)
-3)
-4)
+1)14. In quale materiale è realizzato il più celebre David di Donatello?
+A Avorio
+B Marmo
+C Bronzo
+D Gesso
+Risposta: C
+
+2)17. Chi è stato Presidente degli USA immediatamente prima di Barack Obama?
+A George Bush
+B Ronald Reagan
+C Bill Clinton
+D Jimmy Carter
+Risposta: C
+
+3)23. In quale capitale è stata approvata la Costituzione dell'Unione Europea?
+A Roma
+B Berlino
+C Londra
+D Bruxelles
+Risposta: A
+
+4)27. La città famosa per i giardini pensili.
+A Babilonia
+B Genova
+C Londra
+D Varsavia
+Risposta: A
+
+5)36. Come si chiama il premio in palio al festival internazionale del cinema di Venezia?
+A David di Donatello
+B Leone d'oro
+C Oscar della laguna
+D Palma d'oro
+Risposta: B
+
+6)38. Chi fu soprannominato il "Flagello di Dio"?
+A Gengis Khan
+B Attila
+C Napoleone
+D Alessandro Magno
+Risposta: B
+
+Minigiochi:
+1) Gioco melanzane:
+	spammare un tasto a scelta (space bar, mouse) chi schiaccia più volte vince;
+2) Gioco pesca pesci:
+	scegli un bottone puoi pescare o un pesce buono o un pesce cattivo. se buono sei salvo e continui altrimenti perdi
+3) Gioco imbrocca il lato:
+	non guardare nel lato sbagliato
+4) Gioco immagine sgranata(?):
+	imbrocca l'immagine giusta
+5) Gioco sasso carta forbice:
+	1 vs 1 sasso carta forbice;
+6) Gioco Tris:
+	Tris
