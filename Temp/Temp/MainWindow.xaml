@@ -1,0 +1,13 @@
+﻿<Window x:Class="Temp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Temp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720.4" Width="1080">
+    <Grid>
+        <Image Margin="0,85,-204.4,121.4" Source="mappa.png" Stretch="Fill"/>
+        <Button x:Name="btnDado" Content="Tira il dado" HorizontalAlignment="Left" VerticalAlignment="Top" Width="161" Margin="394,452,0,0" Height="63" Click="btnDado_Click"/>
+    </Grid>
+</Window>

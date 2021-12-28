@@ -1,0 +1,11 @@
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.csproj.AssemblyReference.cache
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\MainWindow.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GamecartaForbiceSasso.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GameImmagine.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GameLato.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GameMelanzane.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GamePesca.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GameTris.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\App.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp_MarkupCompile.cache
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp_MarkupCompile.lref
