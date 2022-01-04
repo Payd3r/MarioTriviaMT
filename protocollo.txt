@@ -1,73 +1,120 @@
-Inizio connessione
-uguale a quella chat
-
+Inizio
+	FASE1:
+    		a;NOME_MITTENTE; 	(chiamata NON bloccante)    		
+	FASE2:
+		y;NOME_DESTINATARIO;	se posso/voglio accettare la connessione     		
+		n;			se non posso/voglio accettare la connessione     		
+	FASE3:
+    		y;
+    		n;
+		//Se ho una connessione in attesa di risposta e mi arriva un'altra connessione
+		//la annullo a prescindere se richiedo ma non ricevo risposta, annullo 
+		//se poi mi risponde, invio "n;"
+		(se non mi risponde, non invio niente durante la fase di annulla)
 Comunicazione:
-m;a;numero / m;i;numero      m=movimento a=avanti  i=indietro conferma a fine domanda/minigioco
-d;numeroMinigioco/domanda    lo invia solo chi inizia la connessione ogni due tiro dadi
+	-FASE PICK
+		p;nome;skin	1234	p;Payd3r;3    chi manda per primo il pick gioca primo
+	-SPOSTAMENTO
+		s;numero dado		s;5	se capiti si perdi/guadagni lo fa solo chi ha il turno
+	-MINIGIOCHI
+		1) Gioco melanzane:
+			si apre il minigioco timer di 10 sec e poi partono entrambi
+			M;avanti	si sposta
+		2) Gioco pesca pesci:
+			P;vett[f,t,t,f,t,t]
+			si apre il minigioco timer di 10 sec e poi partono entrambi
+			E;3	pos estratta
+			//se uno non sceglie niente per 10 sec prerde
+		3) Gioco imbrocca il lato:
+			
+			non guardare nel lato sbagliato
+		4) Gioco immagine sgranata:
+			si apre il minigioco timer di 10 sec e poi partono entrambi
+			I;2	1234 immagine scelta		chi fa prima vince piu' punti
+		5) Gioco sasso carta forbice:
+			si apre il minigioco timer di 10 sec e poi partono entrambi
+			scegli cosa mettere
+			S;c	cfs	
+			se si pareggi si apre il timer di 5 sec e si riparte
+			//se uno non sceglie niente per 10 sec prerde
+		6) Gioco Tris:
+			si apre il minigioco timer di 10 sec e poi partono entrambi tocca per prima quello che ha tirato il dado
+			l'host e' sempre la x
+			123
+			456
+			789
+			T;1	posizione pickata
+			//dopo 3 pareggi vincono entrambi
+			//se uno non sceglie niente per 10 sec prerde
+	-DOMANDE		
+		D;8	l'host invia il num della domanda
+		R;v	vp	v = azzeccata | p = sbagliata
+	-BIVIO
+		B;1	1/2	la scelta la fa l'host 	1 = continui sempre dritto | 2 = l'altro lato
 
-if(domanda)
-  fa vedere la domanda e aspetta la risposta
- else
-  inizia una comunicazione relativa ai minigiochi
-mando movimento se fa giusto o sbagliato
+---> si arriva assieme alla fine, chi ha piu' monete vince
 
-Chiusura connessione
-uguale a quella chat
+Chiusura connessione automatica a fine gioco
+c;
+
+
+
+
 
 Domande: 
 1)14. In quale materiale è realizzato il più celebre David di Donatello?
-A Avorio
-B Marmo
-C Bronzo
-D Gesso
+	A Avorio
+	B Marmo
+	C Bronzo
+	D Gesso
 Risposta: C
 
 2)17. Chi è stato Presidente degli USA immediatamente prima di Barack Obama?
-A George Bush
-B Ronald Reagan
-C Bill Clinton
-D Jimmy Carter
+	A George Bush
+	B Ronald Reagan
+	C Bill Clinton
+	D Jimmy Carter
 Risposta: C
 
 3)23. In quale capitale è stata approvata la Costituzione dell'Unione Europea?
-A Roma
-B Berlino
-C Londra
-D Bruxelles
+	A Roma
+	B Berlino
+	C Londra
+	D Bruxelles
 Risposta: A
 
 4)27. La città famosa per i giardini pensili.
-A Babilonia
-B Genova
-C Londra
-D Varsavia
+	A Babilonia
+	B Genova
+	C Londra
+	D Varsavia
 Risposta: A
 
 5)36. Come si chiama il premio in palio al festival internazionale del cinema di Venezia?
-A David di Donatello
-B Leone d'oro
-C Oscar della laguna
-D Palma d'oro
+	A David di Donatello
+	B Leone d'oro
+	C Oscar della laguna
+	D Palma d'oro
 Risposta: B
 
 6)38. Chi fu soprannominato il "Flagello di Dio"?
-A Gengis Khan
-B Attila
-C Napoleone
-D Alessandro Magno
+	A Gengis Khan
+	B Attila
+	C Napoleone
+	D Alessandro Magno
 Risposta: B
 
 Minigiochi:
-1) Gioco melanzane:
-	spammare un tasto a scelta (space bar, mouse) chi schiaccia più volte vince;
-2) Gioco pesca pesci:
-	scegli un bottone puoi pescare o un pesce buono o un pesce cattivo. se buono sei salvo e continui altrimenti perdi
-3) Gioco imbrocca il lato:
-	non guardare nel lato sbagliato
-4) Gioco immagine sgranata(?):
-	imbrocca l'immagine giusta
-5) Gioco sasso carta forbice:
-	1 vs 1 sasso carta forbice;
-6) Gioco Tris:
-	Tris
-7) snake gioco bonus
+	1) Gioco melanzane:
+		spammare un tasto a scelta (space bar, mouse) chi schiaccia più volte vince;
+	2) Gioco pesca pesci:
+		scegli un bottone puoi pescare o un pesce buono o un pesce cattivo. se buono sei salvo e continui altrimenti perdi
+	3) Gioco imbrocca il lato:
+		non guardare nel lato sbagliato
+	4) Gioco immagine sgranata(?):
+		imbrocca l'immagine giusta
+	5) Gioco sasso carta forbice:
+		1 vs 1 sasso carta forbice;
+	6) Gioco Tris:
+		Tris
+	7) snake gioco bonus

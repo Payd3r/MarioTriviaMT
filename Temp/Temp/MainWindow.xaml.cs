@@ -21,15 +21,21 @@ namespace Temp
     {
         Utente Ulocale;
         Utente Uesterno;
-
         public MainWindow()
         {
             InitializeComponent();
-            //crea utente locale
-            Ulocale = new Utente();
+        }
+        public MainWindow(string nome, int skin)
+        {
+            InitializeComponent();
             //invio messaggio con le mie info (nick,skin)
-            //richiedi informazioni per crare l'altro utente(nick, skin)
+            //richiedi informazioni per crare l'altro utente(nick, skin, turno)
             Uesterno = new Utente(richiediInfo());
+            //crea utente locale
+            if (Uesterno.turno)
+                Ulocale = new Utente(nome + ";" + skin + ";" + false);
+            else
+                Ulocale = new Utente(nome + ";" + skin + ";" + true);
             //start threadMuoviPersonaggi
             var THmuoviPersonaggi = new Thread(muoviPersonaggi);
             THmuoviPersonaggi.Start();
@@ -47,7 +53,18 @@ namespace Temp
             //se tocca all'utente locale -> MessageBox con il num uscito
             //invio il num uscito ad esterno
             //sposto anche in locale
-
+            if (Ulocale.turno)
+            {
+                Random rnd = new Random();
+                int estrazione = rnd.Next(0, 6);
+                Thread.Sleep(100);
+                MessageBox.Show("Il numero uscito e' " + estrazione + "!");
+                //invio estrazione
+                Ulocale.posMappa += estrazione;
+                Uesterno.posMappa += estrazione;
+            }
+            else
+                MessageBox.Show("Non e' il tuo turno!");
         }
         private void muoviPersonaggi()
         {
