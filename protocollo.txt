@@ -1,9 +1,9 @@
 Inizio
 	FASE1:
-    		a;NOME_MITTENTE; 	(chiamata NON bloccante)    		
+    		a;	(chiamata NON bloccante)    		
 	FASE2:
-		y;NOME_DESTINATARIO;	se posso/voglio accettare la connessione     		
-		n;			se non posso/voglio accettare la connessione     		
+		y;	se posso/voglio accettare la connessione     		
+		n;	se non posso/voglio accettare la connessione     		
 	FASE3:
     		y;
     		n;
