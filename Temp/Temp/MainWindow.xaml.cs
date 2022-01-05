@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,19 +21,32 @@ namespace Temp
 {
     public partial class MainWindow : Window
     {
-        Utente Ulocale;
-        Utente Uesterno;
+        Utente Ulocale= new Utente();
+        Utente Uesterno=new Utente();
         int estrazione;
+        UdpClient peer = new UdpClient();
         public MainWindow()
         {
             InitializeComponent();
+            Menu m = new Menu();
+            m.Show();
+            this.Hide();
         }
-        public MainWindow(string nome, int skin)
+      
+        public MainWindow(string nome, int skin, string indirizzo)
         {
+            var THRiceviInfo = new Thread(richiediInfo);
             InitializeComponent();
+            //inserisco informazioni utente locale
+            Ulocale.nick = nome;
+            Ulocale.skin = skin;
             //invio messaggio con le mie info (nick,skin)
+            byte[] data = Encoding.ASCII.GetBytes("p;"+nome+";"+skin+";");
+            peer.Send(data, data.Length, indirizzo, 666);
+
             //richiedi informazioni per crare l'altro utente(nick, skin, turno)
-            Uesterno = new Utente(richiediInfo());
+            //Uesterno = new Utente(richiediInfo());
+
             //crea utente locale
             if (Uesterno.turno)
                 Ulocale = new Utente(nome + ";" + skin + ";" + false);
@@ -44,10 +59,22 @@ namespace Temp
             var THcontrolloPos = new Thread(controlloPos);
             THcontrolloPos.Start();
         }
-        private string richiediInfo()
+        private void richiediInfo()
         {
-            string s = "";
-            return s;
+           
+            IPEndPoint riceveEP = new IPEndPoint(IPAddress.Any, 0);
+
+            byte[] dataReceived = peer.Receive(ref riceveEP);
+
+            String risposta = Encoding.ASCII.GetString(dataReceived);
+
+            string[] info = risposta.Split(';');
+            if(info[0]=="p")
+            {
+                Uesterno.nick = info[1];
+                Uesterno.skin = Convert.ToInt32(info[2]);
+            }
+           
         }
         private void btnDado_Click(object sender, RoutedEventArgs e)
         {
