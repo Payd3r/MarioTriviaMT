@@ -21,6 +21,7 @@ namespace Temp
     {
         Utente Ulocale;
         Utente Uesterno;
+        int estrazione;
         public MainWindow()
         {
             InitializeComponent();
@@ -56,12 +57,10 @@ namespace Temp
             if (Ulocale.turno)
             {
                 Random rnd = new Random();
-                int estrazione = rnd.Next(0, 6);
+                estrazione = rnd.Next(0, 6);
                 Thread.Sleep(100);
                 MessageBox.Show("Il numero uscito e' " + estrazione + "!");
                 //invio estrazione
-                Ulocale.posMappa += estrazione;
-                Uesterno.posMappa += estrazione;
             }
             else
                 MessageBox.Show("Non e' il tuo turno!");
@@ -69,76 +68,127 @@ namespace Temp
         private void muoviPersonaggi()
         {
             //controlla la posizione all'interno di locale ed esterno e riposiziona le skin nella minimappa
+            while (true)
+                if (estrazione > 0)
+                {
+                    bool check = false;
+                    for (int i = 0; i < estrazione && !check; i++)
+                    {
+                        muoviUno(Ulocale.posMappa++);
+                        if (Ulocale.posMappa == 53)
+                            //se e' ad un bivio si ferma
+                            check = true;
+                    }
+                    if (!check)
+                        estrazione = 0;
+                }
+        }
+        private void muoviUno(int num)
+        {
+            //sposta le skin fino al num
+            Ulocale.posMappa++;
+            Uesterno.posMappa++;
 
         }
         private void controlloPos()
         {
-            if (Ulocale.posMappa == 1)
+            while (true)
             {
-                //se pos =  -> aggiungo monete a locale 
-                Ulocale.numMonete += 10;
-            }
-            else if (Ulocale.posMappa == 2)
-            {
-                //se pos =  -> aggiorno pos di locale ed invio a esterno
-                Ulocale.posMappa++;
-                //  invio Ulocale.posMappa;
-            }
-            else if (Ulocale.posMappa == 3)
-            {
-                //se pos =  -> apro il form del minigame corrispondente
-                //            1) Melanzane
-                //            2) Pesca pesci
-                //            3) Imbrocca il lato
-                //            4) Immagine sgranata
-                //            5) Carta forbice e sassi
-                //            6) Tris
-                switch (Ulocale.posMappa)
+                if (Ulocale.posMappa == 1)
                 {
-                    case 4:
-                        GameMelanzane a = new GameMelanzane(Ulocale, Uesterno);
-                        a.Show();
-                        break;
-                    case 5:
-                        GamePesca b = new GamePesca(Ulocale, Uesterno);
-                        b.Show();
-                        break;
-                    case 6:
-                        GameLato c = new GameLato(Ulocale, Uesterno);
-                        c.Show();
-                        break;
-                    case 7:
-                        GameImmagine d = new GameImmagine(Ulocale, Uesterno);
-                        d.Show();
-                        break;
-                    case 8:
-                        GamecartaForbiceSasso e = new GamecartaForbiceSasso(Ulocale, Uesterno);
-                        e.Show();
-                        break;
-                    case 9:
-                        GameTris f = new GameTris(Ulocale, Uesterno);
-                        f.Show();
-                        break;
+                    if (Ulocale.turno)
+                        //se pos =  -> aggiungo monete a locale 
+                        Ulocale.numMonete += 10;
                 }
-                this.Hide();
-            }
-            else if (Ulocale.posMappa == 10)
-            {
-                //se pos =  -> apro il form con una domanda random
-                Domande a = new Domande(Ulocale, Uesterno);
-                a.Show();
-                this.Hide();
-            }
-            else if (Ulocale.posMappa == 11)
-            {
-                //se pos =  -> tolgo monete a locale
-                Ulocale.numMonete -= 10;
-            }
-            else if (Ulocale.posMappa == 12)
-            {
-                //se pos =  -> 1) aspetto che l'utente locale scelga dove andare
-                //             2) aspetto che mi arrivi la scelta da esterno
-
+                else if (Ulocale.posMappa == 2)
+                {
+                    if (Ulocale.turno)
+                        //se pos =  -> aggiorno pos di locale ed invio a esterno
+                        Ulocale.posMappa += 2;
+                    //  invio Ulocale.posMappa;
+                }
+                else if (Ulocale.posMappa == 3)
+                {
+                    //se pos =  -> apro il form del minigame corrispondente
+                    //            1) Melanzane
+                    //            2) Pesca pesci
+                    //            3) Imbrocca il lato
+                    //            4) Immagine sgranata
+                    //            5) Carta forbice e sassi
+                    //            6) Tris
+                    switch (Ulocale.posMappa)
+                    {
+                        case 4:
+                            GameMelanzane a = new GameMelanzane(Ulocale, Uesterno);
+                            a.Show();
+                            break;
+                        case 5:
+                            GamePesca b = new GamePesca(Ulocale, Uesterno);
+                            b.Show();
+                            break;
+                        case 6:
+                            GameLato c = new GameLato(Ulocale, Uesterno);
+                            c.Show();
+                            break;
+                        case 7:
+                            GameImmagine d = new GameImmagine(Ulocale, Uesterno);
+                            d.Show();
+                            break;
+                        case 8:
+                            GamecartaForbiceSasso e = new GamecartaForbiceSasso(Ulocale, Uesterno);
+                            e.Show();
+                            break;
+                        case 9:
+                            GameTris f = new GameTris(Ulocale, Uesterno);
+                            f.Show();
+                            break;
+                    }
+                    this.Hide();
+                }
+                else if (Ulocale.posMappa == 10)
+                {
+                    //se pos =  -> apro il form con una domanda random
+                    Domande a = new Domande(Ulocale, Uesterno);
+                    a.Show();
+                    this.Hide();
+                    //aspetto di sapere cos'ha fatto esterno
+                }
+                else if (Ulocale.posMappa == 11)
+                {
+                    if (Ulocale.turno)
+                        //se pos =  -> tolgo monete a locale
+                        Ulocale.numMonete -= 10;
+                }
+                else if (Ulocale.posMappa == 12)
+                {
+                    //se pos =  -> 1) aspetto che l'utente locale scelga dove andare
+                    //             2) aspetto che mi arrivi la scelta da esterno
+                    if (Ulocale.turno)
+                    {
+                        //tocca a me
+                        MessageBoxResult dialogResult = MessageBox.Show("Vuoi proseguire dritto?", "Scelta bivio", MessageBoxButton.YesNo);
+                        if (dialogResult == MessageBoxResult.Yes)
+                        {
+                            //proseguo dritto
+                            bool check = false;
+                            for (int i = 0; i < estrazione && !check; i++)
+                            {
+                                muoviUno(Ulocale.posMappa++);
+                                if (Ulocale.posMappa == 53)
+                                    //se e' ad un bivio si ferma
+                                    check = true;
+                            }
+                            if (!check)
+                                estrazione = 0;
+                        }
+                        else if (dialogResult == MessageBoxResult.No)
+                        {
+                            //giro
+                            for (int i = 0; i < estrazione; i++)
+                                muoviUno(Ulocale.posMappa++);
+                        }
+                    }
+                }
             }
         }
     }
