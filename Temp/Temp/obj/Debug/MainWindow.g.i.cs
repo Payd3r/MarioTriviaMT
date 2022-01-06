@@ -41,7 +41,7 @@ namespace Temp {
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 11 "..\..\MainWindow.xaml"
+        #line 10 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button btnDado;
         
@@ -81,7 +81,7 @@ namespace Temp {
             case 1:
             this.btnDado = ((System.Windows.Controls.Button)(target));
             
-            #line 11 "..\..\MainWindow.xaml"
+            #line 10 "..\..\MainWindow.xaml"
             this.btnDado.Click += new System.Windows.RoutedEventHandler(this.btnDado_Click);
             
             #line default

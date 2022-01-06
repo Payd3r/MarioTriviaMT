@@ -154,5 +154,8 @@
   <ItemGroup>
     <Resource Include="mappa.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mappa.jpeg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

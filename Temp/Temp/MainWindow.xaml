@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Temp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720.4" Width="1080">
+        Title="MainWindow" Height="1018" Width="1008">
     <Grid>
-        <Image Margin="0,85,-204.4,121.4" Source="mappa.png" Stretch="Fill"/>
-        <Button x:Name="btnDado" Content="Tira il dado" HorizontalAlignment="Left" VerticalAlignment="Top" Width="161" Margin="394,452,0,0" Height="63" Click="btnDado_Click"/>
+        <Button x:Name="btnDado" Content="Tira il dado" HorizontalAlignment="Left" VerticalAlignment="Top" Width="161" Margin="746,828,0,0" Height="63" Click="btnDado_Click"/>
+        <Image Margin="0,0,-0.4,0.4" Source="mappa.jpeg" Stretch="Fill"/>
     </Grid>
 </Window>
