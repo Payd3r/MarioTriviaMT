@@ -55,11 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Condivisa.cs" />
     <Compile Include="Domande.xaml.cs">
       <DependentUpon>Domande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Menu.xaml.cs">
-      <DependentUpon>Menu.xaml</DependentUpon>
+    <Compile Include="FasePick.xaml.cs">
+      <DependentUpon>FasePick.xaml</DependentUpon>
     </Compile>
     <Compile Include="Minigames\GamecartaForbiceSasso.xaml.cs">
       <DependentUpon>GamecartaForbiceSasso.xaml</DependentUpon>
@@ -79,8 +80,15 @@
     <Compile Include="Minigames\GameTris.xaml.cs">
       <DependentUpon>GameTris.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Minimappa.xaml.cs">
+      <DependentUpon>Minimappa.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utente.cs" />
     <Page Include="Domande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FasePick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,10 +104,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Menu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Minigames\GamecartaForbiceSasso.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Minigames\GameTris.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Minimappa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,10 +160,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mappa.png" />
+    <Resource Include="mappa.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mappa.jpeg" />
+    <Resource Include="1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

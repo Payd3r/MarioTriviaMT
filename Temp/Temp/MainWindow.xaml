@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Temp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1018" Width="1008">
+        Title="MainWindow" Height="212.533" Width="436.667">
     <Grid>
-        <Button x:Name="btnDado" Content="Tira il dado" HorizontalAlignment="Left" VerticalAlignment="Top" Width="161" Margin="746,828,0,0" Height="63" Click="btnDado_Click"/>
-        <Image Margin="0,0,-0.4,0.4" Source="mappa.jpeg" Stretch="Fill"/>
+        <Label Content="Inserisci indirizzo di connessione:" HorizontalAlignment="Left" Margin="32,66,0,0" VerticalAlignment="Top" Width="226" Height="34" FontSize="14"/>
+        <TextBox x:Name="txtIndirizzo" HorizontalAlignment="Left" Height="31" Margin="259,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <Button Content="Connettiti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="169,116,0,0" Height="33" Click="Button_Click"/>
+        <Label Content="Inizia una connessione" HorizontalAlignment="Left" VerticalAlignment="Top" Width="288" Margin="111,17,0,0" FontSize="16" FontWeight="Bold"/>
     </Grid>
 </Window>

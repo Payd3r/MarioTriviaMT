@@ -40,3 +40,25 @@ C:\Users\Paolo\Source\Repos\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.exe
 C:\Users\Paolo\Source\Repos\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.pdb
 C:\Users\Paolo\Source\Repos\MarioTriviaMT\Temp\Temp\obj\Debug\Menu.g.cs
 C:\Users\Paolo\Source\Repos\MarioTriviaMT\Temp\Temp\obj\Debug\Menu.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Domande.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minimappa.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.exe
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.pdb
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\bin\Debug\Temp.exe.config
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\bin\Debug\Temp.exe
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\bin\Debug\Temp.pdb
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Domande.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\MainWindow.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GamecartaForbiceSasso.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GameImmagine.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GameLato.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GameMelanzane.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GamePesca.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GameTris.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minimappa.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.g.resources
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.Properties.Resources.resources
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.csproj.GenerateResource.cache
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.csproj.CoreCompileInputs.cache
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\FasePick.g.cs
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\FasePick.baml
