@@ -1,0 +1,24 @@
+﻿<Window x:Class="Temp.FasePick"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Temp"
+        mc:Ignorable="d"
+        Title="FasePick" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Margin="257,63,0,0"/>
+        <Label Content="Inserisci il tuo nickname:" HorizontalAlignment="Left" Margin="81,63,0,0" VerticalAlignment="Top" Width="171" FontSize="14"/>
+        <RadioButton x:Name="r1" Content="Skin1" HorizontalAlignment="Left" Margin="128,261,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="r2" Content="Skin2" HorizontalAlignment="Left" Margin="278,261,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="r3" Content="Skin3" HorizontalAlignment="Left" Margin="427,261,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="r4" Content="Skin4" HorizontalAlignment="Left" Margin="570,261,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fase di scelta Nome e Personaggio" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="247,8,0,0" FontSize="20" FontWeight="Bold"/>
+        <Image Margin="105,126,588.6,194" Source="1.png" Stretch="Fill"/>
+        <Image Margin="257,126,436.6,194" Source="2.png" Stretch="Fill"/>
+        <Image Margin="409,126,284.6,194" Source="3.png" Stretch="Fill"/>
+        <Image Margin="554,126,139.6,194" Source="4.png" Stretch="Fill"/>
+        <Button x:Name="btnConferma" Content="Conferma e Inizia" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Margin="315,333,0,0" Height="56"/>
+
+    </Grid>
+</Window>

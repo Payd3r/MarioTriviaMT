@@ -21,14 +21,13 @@ namespace Temp
             skin = 0;
             turno = false;
         }
-        public Utente(string s)
+        public Utente(string a,string b)
         {
-            string[] vett = s.Split(';');
             numMonete = 0;
             posMappa = 0;            
-            nick = vett[0];
-            skin = Convert.ToInt32(vett[1]);
-            turno = Convert.ToBoolean(vett[2]);
+            nick = a;
+            skin = Convert.ToInt32(b);
+            turno = false;
         }
     }
 }

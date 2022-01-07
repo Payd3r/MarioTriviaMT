@@ -14,52 +14,46 @@ using System.Windows.Shapes;
 
 namespace Temp
 {
-    /// <summary>
-    /// Logica di interazione per Menu.xaml
-    /// </summary>
-    public partial class Menu : Window
+    public partial class FasePick : Window
     {
-        public Menu()
+        Condivisa c;
+        string nome2, skin2;
+        bool turno;
+
+        public FasePick(string nome, string skin, bool a, Condivisa cond)
         {
             InitializeComponent();
+            c = cond;
+            nome2 = nome;
+            skin2 = skin;
+            turno = a;
         }
-
         private void btnConferma_Click(object sender, RoutedEventArgs e)
         {
-            bool errore = false;
-            int skin = 0;
-            string name = txtNome.Text;
-            string indirizzo = txtIndirizzo.Text;
+            int skin1 = 0;
+            string nome1 = txtNome.Text;
             if (r1.IsChecked == true)
-                skin = 1;
+                skin1 = 1;
             if (r2.IsChecked == true)
-                skin = 2;
+                skin1 = 2;
             if (r3.IsChecked == true)
-                skin = 3;
+                skin1 = 3;
             if (r4.IsChecked == true)
-                skin = 4;
-            if (skin == 0)
+                skin1 = 4;
+            if (skin1 == 0)
             {
                 MessageBox.Show("Devi scegliere una skin per iniziare");
-                errore = true;
             }
-            if (name == "")
+            else if (nome1 == "")
             {
                 MessageBox.Show("Devi inserire un nome per iniziare");
-                errore = true;
             }
-            if (indirizzo == "")
+            else
             {
-                MessageBox.Show("Devi inserire un indirizzo per poter giocare con qualcuno");
-                errore = true;
-            }
-
-            if(errore==false){
-                MainWindow m = new MainWindow(name, skin, indirizzo);
-                m.Show();
+                Minimappa a = new Minimappa(nome1, skin1.ToString(), nome2, skin2, turno, c);
+                a.Show();
                 this.Hide();
             }
-           
         }
     }
 }
