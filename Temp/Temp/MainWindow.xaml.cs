@@ -96,7 +96,6 @@ namespace Temp
                 c.indirizzo = "";
             }
         }
-
         private void ConnessioneDaInterno()
         {
             //dopo aver mandato una richiesta di connessione attendo la risposta
