@@ -56,5 +56,16 @@ namespace Temp
                 Thread.Sleep(1000);
             }
         }
+        public string prendi()
+        {
+            string s = "";
+            if (BufferRicevuti.Count() > 0)
+            {
+                s = BufferRicevuti[0];
+                BufferRicevuti.RemoveAt(0);
+            }
+            return s;
+        }
+
     }
 }

@@ -32,16 +32,17 @@ namespace Temp
         private void controlla()
         {
             while (true)
-                if (c.BufferRicevuti.Count > 0)
-                    if (c.BufferRicevuti[0].ElementAt(0) == 'a')
-                    {
-                        //inizia procedura connessione
-                        //ricevo a;indirizzoMittente
-                        c.indirizzo = c.BufferRicevuti[0].Split(';')[1];
-                        c.startServer();
-                        c.BufferRicevuti.RemoveAt(0);
-                        ConnessioneDaEsterno();
-                    }
+            {
+                string s = c.prendi();
+                if (s.ElementAt(0) == 'a')
+                {
+                    //inizia procedura connessione
+                    //ricevo a;indirizzoMittente
+                    c.indirizzo = s.Split(';')[1];
+                    c.startServer();
+                    ConnessioneDaEsterno();
+                }
+            }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -64,29 +65,28 @@ namespace Temp
             {
                 c.BufferInviare.Add("y;");
                 while (true)
-                    if (c.BufferRicevuti.Count > 0)
-                        if (c.BufferRicevuti[0].ElementAt(0) == 'y')
+                    if (c.prendi().ElementAt(0) == 'y')
+                    {
+                        c.BufferInviare.Add("y;");
+                        MessageBox.Show("Connessione iniziata!");
+                        while (true)
                         {
-                            c.BufferRicevuti.RemoveAt(0);
-                            c.BufferInviare.Add("y;");
-                            MessageBox.Show("Connessione iniziata!");
-                            while (true)
-                                if (c.BufferRicevuti.Count > 0)
-                                    if (c.BufferRicevuti[0].ElementAt(0) == 'p')
-                                    {
-                                        FasePick a = new FasePick(c.BufferRicevuti[0].Split(';')[1], c.BufferRicevuti[0].Split(';')[2], false, c);
-                                        a.Show();
-                                        this.Hide();
-                                        //connessione creata con successo, via richiesta esterna
-                                    }
+                            string s = c.prendi();
+                            if (s.ElementAt(0) == 'p')
+                            {
+                                FasePick a = new FasePick(s.Split(';')[1], s.Split(';')[2], false, c);
+                                a.Show();
+                                this.Hide();
+                                //connessione creata con successo, via richiesta esterna
+                            }
                         }
-                        else if (c.BufferRicevuti[0].ElementAt(0) == 'n')
-                        {
-                            c.BufferRicevuti.RemoveAt(0);
-                            MessageBox.Show("Qualcosa e' andato storto!");
-                            txtIndirizzo.Text = "";
-                            c.indirizzo = "";
-                        }
+                    }
+                    else if (c.prendi().ElementAt(0) == 'n')
+                    {
+                        MessageBox.Show("Qualcosa e' andato storto!");
+                        txtIndirizzo.Text = "";
+                        c.indirizzo = "";
+                    }
             }
             else if (dialogResult == MessageBoxResult.No)
             {
@@ -104,41 +104,37 @@ namespace Temp
             //ricevo y; | n;
             //aspetto che mi risponda con le sue info nome;skin
             while (true)
-                if (c.BufferRicevuti.Count > 0)
-                    if (c.BufferRicevuti[0].ElementAt(0) == 'y')
-                    {
-                        c.BufferRicevuti.RemoveAt(0);
-                        c.BufferInviare.Add("y;");
-                        while (true)
-                            if (c.BufferRicevuti.Count > 0)
-                                if (c.BufferRicevuti[0].ElementAt(0) == 'y')
+                if (c.prendi().ElementAt(0) == 'y')
+                {
+                    c.BufferInviare.Add("y;");
+                    while (true)
+                        if (c.prendi().ElementAt(0) == 'y')
+                        {
+                            MessageBox.Show("Connessione iniziata!");
+                            while (true)
+                            {
+                                string s = c.prendi();
+                                if (s.ElementAt(0) == 'p')
                                 {
-                                    c.BufferRicevuti.RemoveAt(0);
-                                    MessageBox.Show("Connessione iniziata!");
-                                    while (true)
-                                        if (c.BufferRicevuti.Count > 0)
-                                            if (c.BufferRicevuti[0].ElementAt(0) == 'p')
-                                            {
-                                                FasePick a = new FasePick(c.BufferRicevuti[0].Split(';')[1], c.BufferRicevuti[0].Split(';')[2], true, c);
-                                                a.Show();
-                                                this.Hide();
-                                            }
+                                    FasePick a = new FasePick(s.Split(';')[1], s.Split(';')[2], true, c);
+                                    a.Show();
+                                    this.Hide();
                                 }
-                                else if (c.BufferRicevuti[0].ElementAt(0) == 'n')
-                                {
-                                    c.BufferRicevuti.RemoveAt(0);
-                                    MessageBox.Show("Qualcosa e' andato storto!");
-                                    txtIndirizzo.Text = "";
-                                    c.indirizzo = "";
-                                }
-                    }
-                    else if (c.BufferRicevuti[0].ElementAt(0) == 'n')
-                    {
-                        c.BufferRicevuti.RemoveAt(0);
-                        MessageBox.Show("Connessione rifiutata!");
-                        txtIndirizzo.Text = "";
-                        c.indirizzo = "";
-                    }
+                            }
+                        }
+                        else if (c.prendi().ElementAt(0) == 'n')
+                        {
+                            MessageBox.Show("Qualcosa e' andato storto!");
+                            txtIndirizzo.Text = "";
+                            c.indirizzo = "";
+                        }
+                }
+                else if (c.prendi().ElementAt(0) == 'n')
+                {
+                    MessageBox.Show("Connessione rifiutata!");
+                    txtIndirizzo.Text = "";
+                    c.indirizzo = "";
+                }
         }
     }
 }
