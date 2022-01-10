@@ -59,12 +59,13 @@ namespace Temp
         public string prendi()
         {
             string s = "";
-            if (BufferRicevuti.Count() > 0)
-            {
-                s = BufferRicevuti[0];
-                BufferRicevuti.RemoveAt(0);
-            }
-            return s;
+            while (true)
+                if (BufferRicevuti.Count() > 0)
+                {
+                    s = BufferRicevuti[0];
+                    BufferRicevuti.RemoveAt(0);
+                    return s;
+                }
         }
 
     }

@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Temp.Minigames"
         mc:Ignorable="d"
-        Title="GameImmagine" Height="450" Width="800">
+        Title="GameImmagine" Height="427.067" Width="768.533">
     <Grid>
-        
+        <Image x:Name="imgPrincipale" HorizontalAlignment="Left" Height="143" VerticalAlignment="Top" Width="137" Margin="314,26,0,0"/>
+        <Image x:Name="img1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="44,199,0,0"/>
+        <Image x:Name="img2" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="243,199,0,0"/>
+        <Image x:Name="img3" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="419,199,0,0"/>
+        <Image x:Name="img4" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="614,199,0,0"/>
+        <Button x:Name="btn1" Content="Scelta 1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="44,329,0,0" Height="25" Click="btn1_Click"/>
+        <Button x:Name="btn2" Content="Scelta 2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="243,329,0,0" Height="25" Click="btn2_Click"/>
+        <Button x:Name="btn3" Content="Scelta 3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="419,329,0,0" Height="25" Click="btn3_Click"/>
+        <Button x:Name="btn4" Content="Scelta 4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="614,329,0,0" Height="25" Click="btn4_Click"/>
+        <Label x:Name="content" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Margin="10,48,0,0"/>
+        <Label x:Name="secondi" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="243,48,0,0" Width="31"/>
+
     </Grid>
 </Window>

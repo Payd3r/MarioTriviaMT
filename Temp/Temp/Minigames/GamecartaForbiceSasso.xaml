@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="GamecartaForbiceSasso" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="btnCarta" Content="Carta" HorizontalAlignment="Left" VerticalAlignment="Top" Width="92" Margin="28,303,0,0" Height="29" Click="btnCarta_Click"/>
+        <Button x:Name="btnForbice" Content="Forbice" HorizontalAlignment="Left" VerticalAlignment="Top" Width="92" Margin="145,303,0,0" Height="29" Click="btnForbice_Click"/>
+        <Button x:Name="btnSasso" Content="Sasso" HorizontalAlignment="Left" VerticalAlignment="Top" Width="92" Margin="265,303,0,0" Height="29" Click="btnSasso_Click"/>
+        <Label x:Name="secondi" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="500,20,0,0" Width="45"/>
+        <Label x:Name="content" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Margin="183,20,0,0"/>
+        <Image x:Name="immagineMia" HorizontalAlignment="Left" Height="189" VerticalAlignment="Top" Width="225" Margin="83,64,0,0"/>
+        <Image x:Name="immagineAltro" HorizontalAlignment="Left" Height="189" VerticalAlignment="Top" Width="225" Margin="470,64,0,0"/>
+
     </Grid>
 </Window>

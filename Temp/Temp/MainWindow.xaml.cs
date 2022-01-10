@@ -31,17 +31,14 @@ namespace Temp
         }
         private void controlla()
         {
-            while (true)
+            string s = c.prendi();
+            if (s.ElementAt(0) == 'a')
             {
-                string s = c.prendi();
-                if (s.ElementAt(0) == 'a')
-                {
-                    //inizia procedura connessione
-                    //ricevo a;indirizzoMittente
-                    c.indirizzo = s.Split(';')[1];
-                    c.startServer();
-                    ConnessioneDaEsterno();
-                }
+                //inizia procedura connessione
+                //ricevo a;indirizzoMittente
+                c.indirizzo = s.Split(';')[1];
+                c.startServer();
+                ConnessioneDaEsterno();
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -64,29 +61,25 @@ namespace Temp
             if (dialogResult == MessageBoxResult.Yes)
             {
                 c.BufferInviare.Add("y;");
-                while (true)
-                    if (c.prendi().ElementAt(0) == 'y')
+                if (c.prendi().ElementAt(0) == 'y')
+                {
+                    c.BufferInviare.Add("y;");
+                    MessageBox.Show("Connessione iniziata!");
+                    string s = c.prendi();
+                    if (s.ElementAt(0) == 'p')
                     {
-                        c.BufferInviare.Add("y;");
-                        MessageBox.Show("Connessione iniziata!");
-                        while (true)
-                        {
-                            string s = c.prendi();
-                            if (s.ElementAt(0) == 'p')
-                            {
-                                FasePick a = new FasePick(s.Split(';')[1], s.Split(';')[2], false, c);
-                                a.Show();
-                                this.Hide();
-                                //connessione creata con successo, via richiesta esterna
-                            }
-                        }
+                        FasePick a = new FasePick(s.Split(';')[1], s.Split(';')[2], false, c);
+                        a.Show();
+                        this.Hide();
+                        //connessione creata con successo, via richiesta esterna
                     }
-                    else if (c.prendi().ElementAt(0) == 'n')
-                    {
-                        MessageBox.Show("Qualcosa e' andato storto!");
-                        txtIndirizzo.Text = "";
-                        c.indirizzo = "";
-                    }
+                }
+                else if (c.prendi().ElementAt(0) == 'n')
+                {
+                    MessageBox.Show("Qualcosa e' andato storto!");
+                    txtIndirizzo.Text = "";
+                    c.indirizzo = "";
+                }
             }
             else if (dialogResult == MessageBoxResult.No)
             {
@@ -103,38 +96,33 @@ namespace Temp
             //invio y; | n; se no errori
             //ricevo y; | n;
             //aspetto che mi risponda con le sue info nome;skin
-            while (true)
+            if (c.prendi().ElementAt(0) == 'y')
+            {
+                c.BufferInviare.Add("y;");
                 if (c.prendi().ElementAt(0) == 'y')
                 {
-                    c.BufferInviare.Add("y;");
-                    while (true)
-                        if (c.prendi().ElementAt(0) == 'y')
-                        {
-                            MessageBox.Show("Connessione iniziata!");
-                            while (true)
-                            {
-                                string s = c.prendi();
-                                if (s.ElementAt(0) == 'p')
-                                {
-                                    FasePick a = new FasePick(s.Split(';')[1], s.Split(';')[2], true, c);
-                                    a.Show();
-                                    this.Hide();
-                                }
-                            }
-                        }
-                        else if (c.prendi().ElementAt(0) == 'n')
-                        {
-                            MessageBox.Show("Qualcosa e' andato storto!");
-                            txtIndirizzo.Text = "";
-                            c.indirizzo = "";
-                        }
+                    MessageBox.Show("Connessione iniziata!");
+                    string s = c.prendi();
+                    if (s.ElementAt(0) == 'p')
+                    {
+                        FasePick a = new FasePick(s.Split(';')[1], s.Split(';')[2], true, c);
+                        a.Show();
+                        this.Hide();
+                    }
                 }
                 else if (c.prendi().ElementAt(0) == 'n')
                 {
-                    MessageBox.Show("Connessione rifiutata!");
+                    MessageBox.Show("Qualcosa e' andato storto!");
                     txtIndirizzo.Text = "";
                     c.indirizzo = "";
                 }
+            }
+            else if (c.prendi().ElementAt(0) == 'n')
+            {
+                MessageBox.Show("Connessione rifiutata!");
+                txtIndirizzo.Text = "";
+                c.indirizzo = "";
+            }
         }
     }
 }
