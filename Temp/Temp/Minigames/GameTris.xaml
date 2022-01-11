@@ -7,6 +7,39 @@
         mc:Ignorable="d"
         Title="GameTris" Height="450" Width="800">
     <Grid>
-        
+        <Label x:Name="content" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Margin="273,10,0,0"/>
+        <Label x:Name="secondi" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="506,10,0,0" Width="31"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="305" Margin="294,69,0,0" Stroke="Black" VerticalAlignment="Top" Width="5"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="305" Margin="416,67,0,0" Stroke="Black" VerticalAlignment="Top" Width="5"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="305" Margin="355,4,0,0" Stroke="Black" VerticalAlignment="Top" Width="5" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.049"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="305" Margin="353,128,0,-13" Stroke="Black" VerticalAlignment="Top" Width="5" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90.049"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Button x:Name="btn1" Content="" HorizontalAlignment="Left" Margin="204,63,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn1_Click"/>
+        <Button x:Name="btn2" Content="" HorizontalAlignment="Left" Margin="316,63,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn2_Click"/>
+        <Button x:Name="btn3" Content="" HorizontalAlignment="Left" Margin="430,63,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn3_Click"/>
+        <Button x:Name="btn6" Content="" HorizontalAlignment="Left" Margin="430,177,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn6_Click"/>
+        <Button x:Name="btn5" Content="" HorizontalAlignment="Left" Margin="316,177,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn5_Click"/>
+        <Button x:Name="btn4" Content="" HorizontalAlignment="Left" Margin="204,177,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn4_Click"/>
+        <Button x:Name="btn7" Content="" HorizontalAlignment="Left" Margin="196,303,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn7_Click"/>
+        <Button x:Name="btn8" Content="" HorizontalAlignment="Left" Margin="316,303,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn8_Click"/>
+        <Button x:Name="btn9" Content="" HorizontalAlignment="Left" Margin="434,303,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn9_Click"/>
+
     </Grid>
 </Window>

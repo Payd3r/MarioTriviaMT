@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="GamePesca" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="btn1" Content="Canna da pesca 1" HorizontalAlignment="Left" Margin="69,181,0,0" VerticalAlignment="Top" Width="103" Height="32" Click="btn1_Click"/>
+        <Button x:Name="btn2" Content="Canna da pesca 2" HorizontalAlignment="Left" Margin="325,181,0,0" VerticalAlignment="Top" Width="103" Height="32" Click="btn2_Click"/>
+        <Button x:Name="btn3" Content="Canna da pesca 3" HorizontalAlignment="Left" Margin="600,181,0,0" VerticalAlignment="Top" Width="103" Height="32" Click="btn3_Click"/>
+        <Button x:Name="btn5" Content="Canna da pesca 5" HorizontalAlignment="Left" Margin="325,330,0,0" VerticalAlignment="Top" Width="103" Height="32" Click="btn5_Click"/>
+        <Button x:Name="btn4" Content="Canna da pesca 4" HorizontalAlignment="Left" Margin="69,330,0,0" VerticalAlignment="Top" Width="103" Height="32" Click="btn4_Click"/>
+        <Button x:Name="btn6" Content="Canna da pesca 6" HorizontalAlignment="Left" Margin="600,330,0,0" VerticalAlignment="Top" Width="103" Height="32" Click="btn6_Click"/>
+        <Label x:Name="content" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Margin="273,10,0,0"/>
+        <Label x:Name="secondi" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="506,10,0,0" Width="31"/>
+
     </Grid>
 </Window>
