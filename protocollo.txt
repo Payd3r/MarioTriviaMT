@@ -26,9 +26,14 @@ Comunicazione:
 			E;3	pos estratta
 			//se uno non sceglie niente per 10 sec prerde
 			e;perso
-		3) Gioco imbrocca il lato:
-			
-			non guardare nel lato sbagliato
+		3) Gioco imbrocca il lato:	(ultimo minigioco)
+			L;vett[1,3,2,1,4]
+			si apre il minigioco timer di 10 sec e poi partono entrambi
+			5 turni con immagini uguali
+			fine invio i risultati
+			l;8 punti finali
+			+2 ogni risposta giusta
+			-1 ogni risposta sbagliata
 		4) Gioco immagine sgranata:
 			si apre il minigioco timer di 10 sec e poi partono entrambi
 			I;2	1234 immagine scelta		chi fa prima vince piu' punti
