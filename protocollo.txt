@@ -25,6 +25,7 @@ Comunicazione:
 			si apre il minigioco timer di 10 sec e poi partono entrambi
 			E;3	pos estratta
 			//se uno non sceglie niente per 10 sec prerde
+			e;perso
 		3) Gioco imbrocca il lato:
 			
 			non guardare nel lato sbagliato
