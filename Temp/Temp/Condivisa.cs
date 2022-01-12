@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,13 +14,13 @@ namespace Temp
     public class Condivisa
     {
         public List<string> BufferInviare { get; set; }
-        public List<string> BufferRicevuti { get; set; }
+        public string BufferRicevuti { get; set; }
         public string indirizzo { get; set; }
 
         public Condivisa()
         {
             BufferInviare = new List<string>();
-            BufferRicevuti = new List<string>();
+            BufferRicevuti = "";
             Thread t1 = new Thread(client);
             t1.Start();
         }
@@ -52,7 +53,7 @@ namespace Temp
                 byte[] dataReceived = client.Receive(ref riceveEP);
                 String s = Encoding.ASCII.GetString(dataReceived);
                 if (s != null)
-                    BufferRicevuti.Add(s);
+                    BufferRicevuti = s;
                 Thread.Sleep(1000);
             }
         }
@@ -60,13 +61,12 @@ namespace Temp
         {
             string s = "";
             while (true)
-                if (BufferRicevuti.Count() > 0)
+                if (BufferRicevuti != "")
                 {
-                    s = BufferRicevuti[0];
-                    BufferRicevuti.RemoveAt(0);
+                    s = BufferRicevuti;
+                    BufferRicevuti = "";
                     return s;
                 }
         }
-
     }
 }

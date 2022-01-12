@@ -96,10 +96,10 @@ namespace Temp.Minigames
             {
                 if (posizione == 100)
                     break;
-                if (posizione != (a.Left - 113) / 10/4)
+                if (posizione != (a.Left - 113) / 10 / 4)
                 {
                     c.BufferInviare.Add("M;avanti");
-                    a.Left += 10/4;
+                    a.Left += 10 / 4;
                     locale.Margin = a;
                 }
             }
@@ -119,7 +119,7 @@ namespace Temp.Minigames
                 if (s[0] == "M")
                     if (s[1] == "avanti")
                     {
-                        a.Left += 10/4;
+                        a.Left += 10 / 4;
                         esterno.Margin = a;
                     }
             }

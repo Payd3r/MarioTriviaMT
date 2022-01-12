@@ -11,5 +11,6 @@
         <TextBox x:Name="txtIndirizzo" HorizontalAlignment="Left" Height="31" Margin="259,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <Button Content="Connettiti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="169,116,0,0" Height="33" Click="Button_Click"/>
         <Label Content="Inizia una connessione" HorizontalAlignment="Left" VerticalAlignment="Top" Width="288" Margin="111,17,0,0" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="info" Content="" Margin="40,166,38,17"/>
     </Grid>
 </Window>

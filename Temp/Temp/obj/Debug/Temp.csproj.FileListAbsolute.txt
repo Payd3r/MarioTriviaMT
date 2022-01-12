@@ -62,3 +62,4 @@ D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\o
 D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.csproj.CoreCompileInputs.cache
 D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\FasePick.g.cs
 D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\FasePick.baml
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.csproj.SuggestedBindingRedirects.cache

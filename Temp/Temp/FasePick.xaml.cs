@@ -28,7 +28,16 @@ namespace Temp
             skin2 = skin;
             turno = a;
         }
-        private void btnConferma_Click(object sender, RoutedEventArgs e)
+        public FasePick(bool a, Condivisa cond)
+        {
+            InitializeComponent();
+            c = cond;
+            nome2 = "";
+            skin2 = "";
+            turno = a;
+        }
+
+        private void btnConferma_Click_1(object sender, RoutedEventArgs e)
         {
             int skin1 = 0;
             string nome1 = txtNome.Text;
@@ -40,19 +49,48 @@ namespace Temp
                 skin1 = 3;
             if (r4.IsChecked == true)
                 skin1 = 4;
-            if (skin1 == 0)
+            if (turno)
             {
-                MessageBox.Show("Devi scegliere una skin per iniziare");
-            }
-            else if (nome1 == "")
-            {
-                MessageBox.Show("Devi inserire un nome per iniziare");
+                if (skin1 == 0)
+                    MessageBox.Show("Devi scegliere una skin per iniziare");
+                else if (nome1 == "")
+                    MessageBox.Show("Devi inserire un nome per iniziare");
+                else
+                {
+                    c.BufferInviare.Add("p;" + nome1 + ";" + skin1);
+                    Minimappa a = new Minimappa(nome1, skin1.ToString(), c);
+                    a.Show();
+                    this.Hide();
+                }
             }
             else
             {
-                Minimappa a = new Minimappa(nome1, skin1.ToString(), nome2, skin2, turno, c);
-                a.Show();
-                this.Hide();
+                string s1 = c.prendi();
+                if (s1.ElementAt(0) == 's')
+                {
+                    nome2 = s1.Split(';')[1];
+                    skin2 = s1.Split(';')[2];
+                }
+                if (skin1 == 0)
+                    MessageBox.Show("Devi scegliere una skin per iniziare");
+                else if (nome1 == "")
+                    MessageBox.Show("Devi inserire un nome per iniziare");
+                else if (skin1 != Convert.ToInt32(skin2))
+                {
+                    MessageBox.Show("Skin gia' pikkata!");
+                    skin1 = 0;
+                }
+                else if (nome1.Equals(nome2))
+                {
+                    MessageBox.Show("Nome gia' in uso!");
+                    nome1 = "";
+                }
+                else
+                {
+                    Minimappa a = new Minimappa(nome1, skin1.ToString(), nome2, skin2.ToString(), c);
+                    a.Show();
+                    this.Hide();
+                }
             }
         }
     }

@@ -26,6 +26,9 @@ namespace Temp
         {
             InitializeComponent();
             c = new Condivisa();
+            Minimappa min = new Minimappa("Andrea", "1", "Paolo", "3", c);
+            min.Show();
+            this.Close();            
             Thread t = new Thread(controlla);
             t.Start();
         }
@@ -61,20 +64,15 @@ namespace Temp
             if (dialogResult == MessageBoxResult.Yes)
             {
                 c.BufferInviare.Add("y;");
-                if (c.prendi().ElementAt(0) == 'y')
+                string s = c.prendi();
+                if (s.ElementAt(0) == 'y')
                 {
                     c.BufferInviare.Add("y;");
                     MessageBox.Show("Connessione iniziata!");
-                    string s = c.prendi();
-                    if (s.ElementAt(0) == 'p')
-                    {
-                        FasePick a = new FasePick(s.Split(';')[1], s.Split(';')[2], false, c);
-                        a.Show();
-                        this.Hide();
-                        //connessione creata con successo, via richiesta esterna
-                    }
+                    MessageBox.Show("Attesa pick dell'avversario!");
+                    //connessione creata con successo, via richiesta esterna
                 }
-                else if (c.prendi().ElementAt(0) == 'n')
+                else if (s.ElementAt(0) == 'n')
                 {
                     MessageBox.Show("Qualcosa e' andato storto!");
                     txtIndirizzo.Text = "";
@@ -88,6 +86,9 @@ namespace Temp
                 txtIndirizzo.Text = "";
                 c.indirizzo = "";
             }
+            FasePick a = new FasePick(false, c);
+            a.Show();
+            this.Close();
         }
         private void ConnessioneDaInterno()
         {
@@ -95,35 +96,30 @@ namespace Temp
             //ricevo y; | n;
             //invio y; | n; se no errori
             //ricevo y; | n;
-            //aspetto che mi risponda con le sue info nome;skin
-            if (c.prendi().ElementAt(0) == 'y')
+            //inizio la connessione e apro la pick phase
+            string s = c.prendi();
+            if (s.ElementAt(0) == 'y')
             {
                 c.BufferInviare.Add("y;");
-                if (c.prendi().ElementAt(0) == 'y')
-                {
+                string s1 = c.prendi();
+                if (s1.ElementAt(0) == 'y')
                     MessageBox.Show("Connessione iniziata!");
-                    string s = c.prendi();
-                    if (s.ElementAt(0) == 'p')
-                    {
-                        FasePick a = new FasePick(s.Split(';')[1], s.Split(';')[2], true, c);
-                        a.Show();
-                        this.Hide();
-                    }
-                }
-                else if (c.prendi().ElementAt(0) == 'n')
+                else if (s1.ElementAt(0) == 'n')
                 {
                     MessageBox.Show("Qualcosa e' andato storto!");
                     txtIndirizzo.Text = "";
                     c.indirizzo = "";
                 }
             }
-            else if (c.prendi().ElementAt(0) == 'n')
+            else if (s.ElementAt(0) == 'n')
             {
                 MessageBox.Show("Connessione rifiutata!");
                 txtIndirizzo.Text = "";
                 c.indirizzo = "";
             }
+            FasePick a = new FasePick(true, c);
+            a.Show();
+            this.Close();
         }
     }
 }
-

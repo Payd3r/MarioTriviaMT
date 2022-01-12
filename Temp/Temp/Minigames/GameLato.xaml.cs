@@ -40,10 +40,7 @@ namespace Temp.Minigames
             mappa = ma;
             scelta = 0;
             if (Ulocale.turno)
-            {
                 c.BufferInviare.Add("P;" + creavettore());
-
-            }
             else
             {
                 string[] s = c.prendi().Split(';');
@@ -62,17 +59,17 @@ namespace Temp.Minigames
         private string creavettore()
         {
             string s = "";
-            
+
             for (int i = 0; i < 5; i++)
             {
 
                 Random rnd = new Random();
                 int estrazione = rnd.Next(0, 4);
-                if (estrazione == 1 )
+                if (estrazione == 1)
                 {
                     vettore[i] = "1";
                     s += "1,";
-                    
+
                 }
                 if (estrazione == 2)
                 {
@@ -92,11 +89,7 @@ namespace Temp.Minigames
                     s += "4,";
 
                 }
-
             }
-
-
-
             return s;
         }
         private void Timer()
@@ -122,7 +115,7 @@ namespace Temp.Minigames
                 {
                     BitmapImage bitmap = new BitmapImage();
                     //principale
-                    
+
                     img1.Source = null;
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia2.png");
@@ -173,7 +166,8 @@ namespace Temp.Minigames
                     bitmap.EndInit();
                     img4.Source = bitmap;
                 }
-                else if (vettore[i] == "4") {
+                else if (vettore[i] == "4")
+                {
                     BitmapImage bitmap = new BitmapImage();
                     //principale
                     img4.Source = null;
@@ -191,7 +185,7 @@ namespace Temp.Minigames
                     img1.Source = bitmap;
                 }
 
-                    content.Content = "Scegli la tua mossa! Entro ";
+                content.Content = "Scegli la tua mossa! Entro ";
                 Thread tempo = new Thread(Timer);
                 tempo.Start();
                 puoiGiocare = true;
@@ -209,10 +203,7 @@ namespace Temp.Minigames
             }
             string[] s = c.prendi().Split(';');
             if (s[0] == "L")
-            {
                 Uesterno.numMonete += Convert.ToInt32(s[1]);
-            }
-
         }
 
         private void btn3_Click(object sender, RoutedEventArgs e)

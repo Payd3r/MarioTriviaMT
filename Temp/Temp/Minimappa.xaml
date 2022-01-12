@@ -9,6 +9,15 @@
     <Grid>
         <Image Margin="18,0,-16,-11.2" Source="mappa.jpeg" Stretch="Fill"/>
         <Button x:Name="btnDado" Content="Tira il dado" HorizontalAlignment="Left" VerticalAlignment="Top" Width="243" Margin="31,887,0,0" Height="80" Click="btnDado_Click"/>
+        <Label x:Name="nick1" Content="" Margin="522,590,334,339"/>
+        <Label x:Name="nick2" Content="" Margin="522,836,334,93"/>
+        <Label x:Name="monete1" Content="" Margin="796,596,114,345"/>
+        <Label x:Name="monete2" Content="" Margin="796,848,114,93"/>
+        <Label x:Name="pos" Content="czcaca" Margin="186,479,737,426"/>
+        <Canvas x:Name="canvas" Margin="57,65,79,531">
+            <Image x:Name="skin1" Height="62" Canvas.Left="19" Canvas.Top="18" Width="65"/>
+            <Image x:Name="skin2" Height="62" Canvas.Left="122" Canvas.Top="18" Width="65"/>
+        </Canvas>
 
     </Grid>
 </Window>

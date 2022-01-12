@@ -29,7 +29,6 @@ namespace Temp.Minigames
         public GameTris()
         {
             InitializeComponent();
-
         }
         public GameTris(Utente a, Utente b, Condivisa cond, Minimappa ma)
         {
@@ -43,7 +42,6 @@ namespace Temp.Minigames
             arr = new string[] { "", "", "", "", "", "", "", "", "" };
             Thread tempo = new Thread(Timer);
             tempo.Start();
-
             gioca();
             mappa.Show();
             this.Hide();
@@ -51,7 +49,7 @@ namespace Temp.Minigames
         private void gioca()
         {
             int vittoria = 0;
-            for (int j = 0; j < 2|| vittoria==0; j++)
+            for (int j = 0; j < 2 || vittoria == 0; j++)
             {
                 btn1.IsEnabled = true;
                 btn2.IsEnabled = true;
@@ -86,7 +84,6 @@ namespace Temp.Minigames
                         c.BufferInviare.Add("T;" + scelta);
                         Ulocale.turno = false;
                         arr[scelta] = "o";
-
                         if (scelta == 1)
                         {
                             btn1.IsEnabled = false;
@@ -136,10 +133,8 @@ namespace Temp.Minigames
                     else
                     {
                         string[] s = c.prendi().Split(';');
-
                         scelta = Convert.ToInt32(s[1]);
                         arr[scelta] = "x";
-
                         if (scelta == 1)
                         {
                             btn1.IsEnabled = false;
@@ -186,7 +181,6 @@ namespace Temp.Minigames
                             btn9.Content = "x";
                         }
                     }
-                   
                     vittoria = CheckWin();
                     if (vittoria == 1)
                     {
@@ -200,9 +194,6 @@ namespace Temp.Minigames
                     }
                 }
             }
-            
-            
-            
         }
         private void Timer()
         {
@@ -221,7 +212,6 @@ namespace Temp.Minigames
         }
         private int CheckWin()
         {
-
             if (arr[1] == arr[2] && arr[2] == arr[3])
             {
                 if (arr[1] == "o")
@@ -245,7 +235,6 @@ namespace Temp.Minigames
                 else
                     return 2;
             }
-
             else if (arr[1] == arr[4] && arr[4] == arr[7])
             {
                 if (arr[1] == "o")
@@ -269,7 +258,6 @@ namespace Temp.Minigames
                 else
                     return 2;
             }
-
             else if (arr[1] == arr[5] && arr[5] == arr[9])
             {
                 if (arr[1] == "o")
@@ -285,81 +273,61 @@ namespace Temp.Minigames
                     return 2;
             }
             else
-            {
                 return 0;
-            }
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
             if (puoiGiocare)
-            {
                 scelta = 1;
-            }
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
             if (puoiGiocare)
-            {
                 scelta = 2;
-            }
         }
 
         private void btn3_Click(object sender, RoutedEventArgs e)
         {
             if (puoiGiocare)
-            {
                 scelta = 3;
-            }
         }
 
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
             if (puoiGiocare)
-            {
                 scelta = 4;
-            }
         }
 
         private void btn5_Click(object sender, RoutedEventArgs e)
         {
             if (puoiGiocare)
-            {
                 scelta = 5;
-            }
         }
 
         private void btn6_Click(object sender, RoutedEventArgs e)
         {
             if (puoiGiocare)
-            {
                 scelta = 6;
-            }
         }
 
         private void btn7_Click(object sender, RoutedEventArgs e)
         {
             if (puoiGiocare)
-            {
                 scelta = 7;
-            }
         }
 
         private void btn8_Click(object sender, RoutedEventArgs e)
         {
             if (puoiGiocare)
-            {
                 scelta = 8;
-            }
         }
 
         private void btn9_Click(object sender, RoutedEventArgs e)
         {
             if (puoiGiocare)
-            {
                 scelta = 9;
-            }
         }
     }
 }
