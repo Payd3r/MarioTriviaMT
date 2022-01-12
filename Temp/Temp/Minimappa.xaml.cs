@@ -120,27 +120,27 @@ namespace Temp
                     switch (Ulocale.posMappa)
                     {
                         case 4:
-                            GameMelanzane a = new GameMelanzane(Ulocale, Uesterno);
+                            GameMelanzane a = new GameMelanzane(Ulocale, Uesterno,c,this);
                             a.Show();
                             break;
                         case 5:
-                            GamePesca b = new GamePesca(Ulocale, Uesterno);
+                            GamePesca b = new GamePesca(Ulocale, Uesterno, c, this);
                             b.Show();
                             break;
                         case 6:
-                            GameLato c = new GameLato(Ulocale, Uesterno);
-                            c.Show();
+                            GameLato l = new GameLato(Ulocale, Uesterno, c, this);
+                            l.Show();
                             break;
                         case 7:
-                            GameImmagine d = new GameImmagine(Ulocale, Uesterno);
+                            GameImmagine d = new GameImmagine(Ulocale, Uesterno, c, this);
                             d.Show();
                             break;
                         case 8:
-                            GamecartaForbiceSasso e = new GamecartaForbiceSasso(Ulocale, Uesterno);
+                            GamecartaForbiceSasso e = new GamecartaForbiceSasso(Ulocale, Uesterno, c, this);
                             e.Show();
                             break;
                         case 9:
-                            GameTris f = new GameTris(Ulocale, Uesterno);
+                            GameTris f = new GameTris(Ulocale, Uesterno, c, this);
                             f.Show();
                             break;
                     }
