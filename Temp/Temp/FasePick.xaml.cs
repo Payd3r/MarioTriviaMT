@@ -19,15 +19,6 @@ namespace Temp
         Condivisa c;
         string nome2, skin2;
         bool turno;
-
-        public FasePick(string nome, string skin, bool a, Condivisa cond)
-        {
-            InitializeComponent();
-            c = cond;
-            nome2 = nome;
-            skin2 = skin;
-            turno = a;
-        }
         public FasePick(bool a, Condivisa cond)
         {
             InitializeComponent();

@@ -14,13 +14,13 @@ namespace Temp
     public class Condivisa
     {
         public List<string> BufferInviare { get; set; }
-        public string BufferRicevuti { get; set; }
+        public List<string> BufferRicevuti { get; set; }
         public string indirizzo { get; set; }
 
         public Condivisa()
         {
             BufferInviare = new List<string>();
-            BufferRicevuti = "";
+            BufferRicevuti = new List<string>();
             Thread t1 = new Thread(client);
             t1.Start();
         }
@@ -40,33 +40,44 @@ namespace Temp
                     server.Send(data, data.Length, indirizzo, 12346);
                     BufferInviare.RemoveAt(0);
                 }
-                Thread.Sleep(1000);
+                Thread.Sleep(100);
             }
         }
 
         private void client()
         {
-            UdpClient client = new UdpClient(12345);
-            IPEndPoint riceveEP = new IPEndPoint(IPAddress.Any, 0);
-            while (true)
+            try
             {
-                byte[] dataReceived = client.Receive(ref riceveEP);
-                String s = Encoding.ASCII.GetString(dataReceived);
-                if (s != null)
-                    BufferRicevuti = s;
-                Thread.Sleep(1000);
+                UdpClient listener = new UdpClient(12345);
+                IPEndPoint riceveEP = new IPEndPoint(IPAddress.Any, 0);
+                while (BufferRicevuti.Last() == "")
+                {
+                    byte[] dataReceived = listener.Receive(ref riceveEP);
+                    BufferRicevuti.Add(Encoding.ASCII.GetString(dataReceived));
+                }
+            }
+            catch (Exception)
+            {
             }
         }
         public string prendi()
         {
             string s = "";
             while (true)
-                if (BufferRicevuti != "")
+            {
+                try
                 {
-                    s = BufferRicevuti;
-                    BufferRicevuti = "";
-                    return s;
+                    if (BufferRicevuti.Count > 0)
+                    {
+                        s = BufferRicevuti.First();
+                        BufferRicevuti.RemoveAt(0);
+                        return s;
+                    }
                 }
+                catch (Exception)
+                {
+                }
+            }
         }
     }
 }

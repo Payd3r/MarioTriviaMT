@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Temp.Minigames
 {
@@ -23,8 +24,10 @@ namespace Temp.Minigames
         Utente Uesterno;
         Condivisa c;
         Minimappa mappa;
-        bool puoiGiocare;
         int scelta;
+        DispatcherTimer dispatcherTimer;
+        Stopwatch stopWatch;
+        TimeSpan ts;
         public GameImmagine()
         {
             InitializeComponent();
@@ -34,59 +37,84 @@ namespace Temp.Minigames
             InitializeComponent();
             Ulocale = a;
             Uesterno = b;
-            puoiGiocare = false;
             c = cond;
             mappa = ma;
             scelta = 0;
-            //carica immagini
-            caricaImmagini();
             //inizio minigioco
             content.Content = "Il minigioco inizia tra ";
-            Thread tempo = new Thread(Timer);
-            tempo.Start();
-            //10 sec per premere un bottone
-            gioca();
-            mappa.Show();
-            this.Hide();
+            stopWatch = new Stopwatch();
+            dispatcherTimer = new DispatcherTimer();
+            stopWatch.Start();
+            dispatcherTimer.Start();
+            dispatcherTimer.Tick += new EventHandler(dt_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            //nascondo
+            scelta1.Visibility = Visibility.Hidden;
+            scelta2.Visibility = Visibility.Hidden;
+            scelta3.Visibility = Visibility.Hidden;
+            scelta4.Visibility = Visibility.Hidden;
+            btnInvio.Visibility = Visibility.Hidden;
+        }
+        void dt_Tick(object sender, EventArgs e)
+        {
+            if (stopWatch.IsRunning)
+            {
+                ts = stopWatch.Elapsed;
+                secondi.Content = ts.Seconds;
+            }
+            if (ts.Seconds > 5)
+            {
+                stopWatch.Stop();
+                avanti();
+            }
+        }
+        private void avanti()
+        {
+            scelta1.Visibility = Visibility.Visible;
+            scelta2.Visibility = Visibility.Visible;
+            scelta3.Visibility = Visibility.Visible;
+            scelta4.Visibility = Visibility.Visible;
+            btnInvio.Visibility = Visibility.Visible;
+            content.Content = "Seleziona la tua immagine in 10 sec";
+            secondi.Content = "";
+            caricaImmagini();
         }
         private void caricaImmagini()
         {
             BitmapImage bitmap = new BitmapImage();
             //principale
             bitmap.BeginInit();
-            bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\imgPrincipale.png");
+            bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\principale.png");
             bitmap.EndInit();
             imgPrincipale.Source = bitmap;
             //1
+            bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\img1.png");
             bitmap.EndInit();
             img1.Source = bitmap;
             //2
+            bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\img2.png");
             bitmap.EndInit();
             img2.Source = bitmap;
             //3
+            bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\img3.png");
             bitmap.EndInit();
             img3.Source = bitmap;
             //4
+            bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\img4.png");
             bitmap.EndInit();
             img4.Source = bitmap;
         }
-        private void gioca()
+
+        private void btnInvio_Click(object sender, RoutedEventArgs e)
         {
-            content.Content = "Scegli la tua mossa! Entro ";
-            Thread tempo = new Thread(Timer);
-            tempo.Start();
-            puoiGiocare = true;
-            //potrebbe bloccare il thread corrente quindi non funzionano i bottoni
-            tempo.Join();
-            puoiGiocare = false;
             //aspetto il messaggio e aggiorno i punti dell'avversario
             c.BufferInviare.Add("I;" + scelta);
             string[] s = c.prendi().Split(';');
@@ -106,41 +134,28 @@ namespace Temp.Minigames
                 MessageBox.Show("Hai perso");
                 Ulocale.numMonete -= 10;
             }
+            mappa.Show();
+            this.Hide();
         }
-        private void Timer()
+
+        private void scelta1_Checked(object sender, RoutedEventArgs e)
         {
-            while (stopwatch.ElapsedMilliseconds < 10000)
-            {
-                stampa();
-                Thread.Sleep(1000);
-            }
+            scelta = 1;
         }
-        private void stampa()
+
+        private void scelta2_Checked(object sender, RoutedEventArgs e)
         {
-            if (!CheckAccess())
-                Dispatcher.Invoke(() => { stampa(); });
-            else
-                secondi.Content = 10 - (stopwatch.ElapsedMilliseconds / 1000);
+            scelta = 2;
         }
-        private void btn1_Click(object sender, RoutedEventArgs e)
+
+        private void scelta3_Checked(object sender, RoutedEventArgs e)
         {
-            if (puoiGiocare)
-                scelta = 1;
+            scelta = 3;
         }
-        private void btn2_Click(object sender, RoutedEventArgs e)
+
+        private void scelta4_Checked(object sender, RoutedEventArgs e)
         {
-            if (puoiGiocare)
-                scelta = 2;
-        }
-        private void btn3_Click(object sender, RoutedEventArgs e)
-        {
-            if (puoiGiocare)
-                scelta = 3;
-        }
-        private void btn4_Click(object sender, RoutedEventArgs e)
-        {
-            if (puoiGiocare)
-                scelta = 4;
+            scelta = 4;
         }
     }
 }

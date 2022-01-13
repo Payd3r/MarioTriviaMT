@@ -7,17 +7,18 @@
         mc:Ignorable="d"
         Title="GameImmagine" Height="427.067" Width="768.533">
     <Grid>
-        <Image x:Name="imgPrincipale" HorizontalAlignment="Left" Height="143" VerticalAlignment="Top" Width="137" Margin="314,26,0,0"/>
-        <Image x:Name="img1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="44,199,0,0"/>
-        <Image x:Name="img2" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="243,199,0,0"/>
-        <Image x:Name="img3" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="419,199,0,0"/>
-        <Image x:Name="img4" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="614,199,0,0"/>
-        <Button x:Name="btn1" Content="Scelta 1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="44,329,0,0" Height="25" Click="btn1_Click"/>
-        <Button x:Name="btn2" Content="Scelta 2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="243,329,0,0" Height="25" Click="btn2_Click"/>
-        <Button x:Name="btn3" Content="Scelta 3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="419,329,0,0" Height="25" Click="btn3_Click"/>
-        <Button x:Name="btn4" Content="Scelta 4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="614,329,0,0" Height="25" Click="btn4_Click"/>
+        <Image x:Name="imgPrincipale" HorizontalAlignment="Left" Height="143" VerticalAlignment="Top" Width="137" Margin="314,14,0,0"/>
+        <Image x:Name="img1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="44,175,0,0"/>
+        <Image x:Name="img2" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="243,175,0,0"/>
+        <Image x:Name="img3" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="419,175,0,0"/>
+        <Image x:Name="img4" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="614,175,0,0"/>
         <Label x:Name="content" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Margin="10,48,0,0"/>
-        <Label x:Name="secondi" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="243,48,0,0" Width="31"/>
+        <Label x:Name="secondi" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="226,48,0,0" Width="77" Height="64"/>
+        <RadioButton x:Name="scelta1" Content="img1" Margin="61,315,599,24" GroupName="immagini" Checked="scelta1_Checked"/>
+        <RadioButton x:Name="scelta2" Content="img2" Margin="249,315,412,24" GroupName="immagini" Checked="scelta2_Checked"/>
+        <RadioButton x:Name="scelta3" Content="img3" Margin="447,315,215,24" GroupName="immagini" Checked="scelta3_Checked"/>
+        <RadioButton x:Name="scelta4" Content="img4" Margin="630,315,33,24" GroupName="immagini" Checked="scelta4_Checked"/>
+        <Button x:Name="btnInvio" Content="Invio" Margin="303,354,327,0" Click="btnInvio_Click"/>
 
     </Grid>
 </Window>

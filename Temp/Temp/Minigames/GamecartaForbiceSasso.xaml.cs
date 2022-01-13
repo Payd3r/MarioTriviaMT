@@ -14,18 +14,20 @@ using System.Windows.Shapes;
 using System.Timers;
 using System.Threading;
 using System.Diagnostics;
+using System.Windows.Threading;
 
 namespace Temp.Minigames
 {
     public partial class GamecartaForbiceSasso : Window
     {
-        Stopwatch stopwatch = new Stopwatch();
         Minimappa mappa;
         Utente Ulocale;
         Utente Uesterno;
         Condivisa c;
         string scelta;
-        bool puoiGiocare;
+        DispatcherTimer dispatcherTimer;
+        Stopwatch stopWatch;
+        TimeSpan ts;
         public GamecartaForbiceSasso()
         {
             InitializeComponent();
@@ -33,30 +35,77 @@ namespace Temp.Minigames
         public GamecartaForbiceSasso(Utente a, Utente b, Condivisa cond, Minimappa ma)
         {
             InitializeComponent();
-            puoiGiocare = false;
             scelta = "";
             Ulocale = a;
             Uesterno = b;
             c = cond;
             mappa = ma;
-            //inizio minigioco
-            content.Content = "Il minigioco inizia tra ";
-            Thread tempo = new Thread(Timer);
-            tempo.Start();
-            int temp = 0;
-            for (int i = 0; i < 3 && temp == 0; i++)
-                temp = gioca(); //se 0 = pareggio | 1 = vinto | 2 = perso
-            risultato(temp);
+            stopWatch = new Stopwatch();
+            dispatcherTimer = new DispatcherTimer();
+            stopWatch.Start();
+            dispatcherTimer.Start();
+            content.Content = "Il minigioco inizia a 10 sec ";
+            dispatcherTimer.Tick += new EventHandler(dt_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            sasso.Visibility = Visibility.Hidden;
+            carta.Visibility = Visibility.Hidden;
+            forbice.Visibility = Visibility.Hidden;
+            btnInvio.Visibility = Visibility.Hidden;
         }
-        private int gioca()
+        void dt_Tick(object sender, EventArgs e)
         {
-            content.Content = "Scegli la tua mossa! Entro ";
-            Thread tempo = new Thread(Timer);
-            tempo.Start();
-            puoiGiocare = true;
-            //potrebbe bloccare il thread corrente quindi non funzionano i bottoni
-            tempo.Join();
-            puoiGiocare = false;
+            if (stopWatch.IsRunning)
+            {
+                ts = stopWatch.Elapsed;
+                secondi.Content = ts.Seconds;
+            }
+            if (ts.Seconds > 5)
+            {
+                stopWatch.Stop();
+                avanti();
+            }
+        }
+        private void avanti()
+        {
+            sasso.Visibility = Visibility.Visible;
+            carta.Visibility = Visibility.Visible;
+            forbice.Visibility = Visibility.Visible;
+            btnInvio.Visibility = Visibility.Visible;
+            content.Content = "Seleziona la tua mossa in 10 sec";
+            secondi.Content = "";
+        }
+        private void risultato(int temp)
+        {
+            if (temp == 1)
+            {
+                Ulocale.numMonete += 10;
+                Uesterno.numMonete -= 10;
+            }
+            else if (temp == 2)
+            {
+                Ulocale.numMonete -= 10;
+                Uesterno.numMonete += 10;
+            }
+            mappa.Show();
+            this.Hide();
+        }
+
+        private void visualizzaImmagine(string k, bool a)
+        {
+            string s = AppDomain.CurrentDomain.BaseDirectory + "\\File\\" + k + ".png";
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(s);
+            bitmap.EndInit();
+            if (a)
+                immagineMia.Source = bitmap;
+            else
+                immagineAltro.Source = bitmap;
+        }
+
+        private void btnInvio_Click(object sender, RoutedEventArgs e)
+        {
+            int ris = 0;
             if (scelta == "")
                 MessageBox.Show("Non hai scelto niente! Hai perso");
             c.BufferInviare.Add("S;" + scelta);
@@ -71,106 +120,63 @@ namespace Temp.Minigames
                 if (s[1] == "")
                 {
                     MessageBox.Show("Hai vinto! L'altro non ha scelto niente.");
-                    return 1;
+                    ris = 1;
                 }
                 else if (s[1] == scelta)
                 {
                     MessageBox.Show("Hai pareggiato!");
-                    return 0;
+                    ris = 0;
                 }
                 else if (s[1] == "c" && scelta == "f")
                 {
                     MessageBox.Show("Hai vinto!");
-                    return 1;
+                    ris = 1;
                 }
                 else if (s[1] == "c" && scelta == "s")
                 {
                     MessageBox.Show("Hai perso!");
-                    return 2;
+                    ris = 2;
                 }
                 else if (s[1] == "f" && scelta == "c")
                 {
                     MessageBox.Show("Hai perso!");
-                    return 2;
+                    ris = 2;
                 }
                 else if (s[1] == "f" && scelta == "s")
                 {
                     MessageBox.Show("Hai vinto!");
-                    return 1;
+                    ris = 1;
                 }
                 else if (s[1] == "s" && scelta == "c")
                 {
                     MessageBox.Show("Hai vinto!");
-                    return 1;
+                    ris = 1;
                 }
                 else if (s[1] == "s" && scelta == "f")
                 {
                     MessageBox.Show("Hai perso!");
-                    return 2;
+                    ris = 2;
                 }
-            return 2;
-        }
-        private void risultato(int temp)
-        {
-            if (temp == 1)
-                Ulocale.numMonete += 10;
-            else if (temp == 2)
-                Ulocale.numMonete -= 10;
-            mappa.Show();
-            this.Hide();
-        }
-        private void Timer()
-        {
-            while (stopwatch.ElapsedMilliseconds < 10000)
-            {
-                stampa();
-                Thread.Sleep(1000);
-            }
-        }
-        private void stampa()
-        {
-            if (!CheckAccess())
-                Dispatcher.Invoke(() => { stampa(); });
-            else
-                secondi.Content = 10 - (stopwatch.ElapsedMilliseconds / 1000);
-        }
-        private void visualizzaImmagine(string k, bool a)
-        {
-            string s = AppDomain.CurrentDomain.BaseDirectory + "\\File\\" + k + ".png";
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(s);
-            bitmap.EndInit();
-            if (a)
-                immagineMia.Source = bitmap;
-            else
-                immagineAltro.Source = bitmap;
-        }
-        private void btnCarta_Click(object sender, RoutedEventArgs e)
-        {
-            if (puoiGiocare)
-            {
-                scelta = "c";
-                visualizzaImmagine("carta", true);
-            }
+            ris = 2;
+            risultato(ris);
         }
 
-        private void btnForbice_Click(object sender, RoutedEventArgs e)
+        private void carta_Checked(object sender, RoutedEventArgs e)
         {
-            if (puoiGiocare)
-            {
-                scelta = "f";
-                visualizzaImmagine("forbice", true);
-            }
+            scelta = "c";
+            visualizzaImmagine("carta", true);
         }
 
-        private void btnSasso_Click(object sender, RoutedEventArgs e)
+        private void forbice_Checked(object sender, RoutedEventArgs e)
         {
-            if (puoiGiocare)
-            {
-                scelta = "s";
-                visualizzaImmagine("sasso", true);
-            }
+            scelta = "f";
+            visualizzaImmagine("forbice", true);
+        }
+
+        private void sasso_Checked(object sender, RoutedEventArgs e)
+        {
+            scelta = "s";
+            visualizzaImmagine("sasso", true);
         }
     }
 }

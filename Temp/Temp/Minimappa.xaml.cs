@@ -58,9 +58,7 @@ namespace Temp
             //inserisco informazioni utente locale
             Ulocale = new Utente(nome1, skin1);
             //richiedi informazioni per crare l'altro utente(nick, skin, turno)
-            do { } while (c.BufferRicevuti == "");
-            string s = c.BufferRicevuti;
-            c.BufferRicevuti = "";
+            string s = c.prendi();
             if (s.ElementAt(0) == 'p')
             {
                 string[] vet = s.Split(';');
@@ -104,16 +102,16 @@ namespace Temp
             if (Ulocale.turno)
             {
                 Random rnd = new Random();
-                int estrazione = rnd.Next(1, 7);
+                estrazione = rnd.Next(1, 7);
                 MessageBox.Show("Il numero uscito e' " + estrazione + "!");
                 //c.BufferInviare.Add("s;" + estrazione);                
-                int num = muoviPersonaggi(1);
+                int num = muoviPersonaggi(estrazione);
                 if (num == -1)
                 {
                     MessageBox.Show("Gioco finito!");
                     this.Close();
                 }
-                controlloPos(num);
+                while (controlloPos(num)) ;
                 //Ulocale.turno = false;
             }
             else
@@ -246,7 +244,7 @@ namespace Temp
                 Canvas.SetLeft(skin2, 1050);
             }
         }
-        private void controlloPos(int num)
+        private bool controlloPos(int num)
         {
             int posizione = Ulocale.posMappa;
             if (posizione == 5 || posizione == 10 || posizione == 16 || posizione == 19 || posizione == 25 || posizione == 33 || posizione == 37 || posizione == 57 || posizione == 65)
@@ -274,7 +272,7 @@ namespace Temp
                 //            6) Tris
                 switch (posizione)
                 {
-                    case 4:
+                    case 9:
                         GameMelanzane a = new GameMelanzane(Ulocale, Uesterno, c, this);
                         a.Show();
                         break;
@@ -286,15 +284,15 @@ namespace Temp
                         GameLato l = new GameLato(Ulocale, Uesterno, c, this);
                         l.Show();
                         break;
-                    case 7:
+                    case 8:
                         GameImmagine d = new GameImmagine(Ulocale, Uesterno, c, this);
                         d.Show();
                         break;
-                    case 8:
+                    case 4:
                         GamecartaForbiceSasso e = new GamecartaForbiceSasso(Ulocale, Uesterno, c, this);
                         e.Show();
                         break;
-                    case 9:
+                    case 10:
                         GameTris f = new GameTris(Ulocale, Uesterno, c, this);
                         f.Show();
                         break;
@@ -307,8 +305,8 @@ namespace Temp
                 Domande a = new Domande(Ulocale, Uesterno, c, this);
                 a.Show();
                 this.Hide();
-                
-                
+
+
             }
             else if (posizione == 11 || posizione == 18 || posizione == 23 || posizione == 26 || posizione == 35 || posizione == 51 || posizione == 56)
             {
@@ -333,7 +331,7 @@ namespace Temp
                     else if (dialogResult == MessageBoxResult.No)
                         //giro
                         s = "B;2";
-                    c.BufferInviare.Add(s);
+                    //c.BufferInviare.Add(s);
                 }
                 else
                     s = c.prendi();
@@ -362,7 +360,9 @@ namespace Temp
                         }
                     }
                 muoviPersonaggi(num);
+                return true;
             }
+            return false;
         }
     }
 }
