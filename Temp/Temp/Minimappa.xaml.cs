@@ -113,7 +113,7 @@ namespace Temp
                     MessageBox.Show("Gioco finito!");
                     this.Close();
                 }
-                //controlloPos(num);
+                controlloPos(num);
                 //Ulocale.turno = false;
             }
             else
@@ -307,14 +307,8 @@ namespace Temp
                 Domande a = new Domande(Ulocale, Uesterno, c, this);
                 a.Show();
                 this.Hide();
-                string s = c.prendi();//aspetto di sapere cos'ha fatto esterno
-                if (s.ElementAt(0) == 'D')
-                    if (s.Split(';')[1] == "V")
-                        //anche l'altro ha azzeccato
-                        Uesterno.numMonete += 10;
-                    else
-                        //l'altro ha sbagliato
-                        Uesterno.numMonete -= 10;
+                
+                
             }
             else if (posizione == 11 || posizione == 18 || posizione == 23 || posizione == 26 || posizione == 35 || posizione == 51 || posizione == 56)
             {

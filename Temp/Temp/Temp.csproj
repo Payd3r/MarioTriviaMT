@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CDomanda.cs" />
     <Compile Include="Condivisa.cs" />
     <Compile Include="Domande.xaml.cs">
       <DependentUpon>Domande.xaml</DependentUpon>
