@@ -160,19 +160,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mappa.jpeg" />
+    <Resource Include="mappa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mapa.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="2.png" />
+    <Resource Include="4.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="4.png" />
+    <Resource Include="2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

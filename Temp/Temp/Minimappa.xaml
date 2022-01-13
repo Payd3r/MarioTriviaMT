@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Temp"
         mc:Ignorable="d"
-        Title="Minimappa" Height="1006.377" Width="1010.653">
+        Title="Minimappa" Height="961" Width="1174">
     <Grid>
-        <Image Margin="18,0,-16,-11.2" Source="mappa.jpeg" Stretch="Fill"/>
-        <Button x:Name="btnDado" Content="Tira il dado" HorizontalAlignment="Left" VerticalAlignment="Top" Width="243" Margin="31,887,0,0" Height="80" Click="btnDado_Click"/>
-        <Label x:Name="nick1" Content="" Margin="522,590,334,339"/>
-        <Label x:Name="nick2" Content="" Margin="522,836,334,93"/>
-        <Label x:Name="monete1" Content="" Margin="796,596,114,345"/>
-        <Label x:Name="monete2" Content="" Margin="796,848,114,93"/>
-        <Label x:Name="pos" Content="czcaca" Margin="186,479,737,426"/>
-        <Canvas x:Name="canvas" Margin="57,65,79,531">
-            <Image x:Name="skin1" Height="62" Canvas.Left="19" Canvas.Top="18" Width="65"/>
-            <Image x:Name="skin2" Height="62" Canvas.Left="122" Canvas.Top="18" Width="65"/>
+        <Image Margin="0,1,0,-3" Source="/mapa.jpg"/>
+
+        <Button x:Name="btnDado" Content="Tira il dado" HorizontalAlignment="Left" VerticalAlignment="Top" Width="190" Margin="845,810,0,0" Height="80" Click="btnDado_Click"/>
+        <Label x:Name="nick1" Content="" Margin="352,680,657,215"/>
+        <Label x:Name="nick2" Content="" Margin="352,827,657,72"/>
+        <Label x:Name="monete1" Content="" Margin="578,673,552,209"/>
+        <Label x:Name="monete2" Content="" Margin="575,819,548,64"/>
+        <Canvas x:Name="canvas" Margin="39,83,33,345">
+            <Image x:Name="skin1" Height="41" Canvas.Left="3" Canvas.Top="22" Width="47"/>
+            <Image x:Name="skin2" Height="39" Canvas.Left="32" Canvas.Top="24" Width="43"/>
         </Canvas>
+        <Label x:Name="prova" Content="" Margin="39,283,955,547"/>
 
     </Grid>
 </Window>

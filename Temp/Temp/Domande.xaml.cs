@@ -18,15 +18,19 @@ namespace Temp
     {
         Utente Ulocale;
         Utente Uesterno;
+        Condivisa c;
+        Minimappa mappa;
         public Domande()
         {
             InitializeComponent();
         }
-        public Domande(Utente a, Utente b)
+        public Domande(Utente a, Utente b, Condivisa cond, Minimappa map)
         {
             InitializeComponent();
             Ulocale = a;
             Uesterno = b;
+            c = cond;
+            mappa = map;
         }
     }
 }

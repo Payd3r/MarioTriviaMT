@@ -17,14 +17,14 @@ namespace Temp
         {
             nick = "";
             numMonete = 0;
-            posMappa = 0;
+            posMappa = 1;
             skin = 0;
             turno = false;
         }
         public Utente(string a,string b)
         {
             numMonete = 0;
-            posMappa = 0;            
+            posMappa = 1;            
             nick = a;
             skin = Convert.ToInt32(b);
             turno = false;

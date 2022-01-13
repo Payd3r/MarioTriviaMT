@@ -14,10 +14,10 @@
         <RadioButton x:Name="r3" Content="Skin3" HorizontalAlignment="Left" Margin="427,261,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="r4" Content="Skin4" HorizontalAlignment="Left" Margin="570,261,0,0" VerticalAlignment="Top"/>
         <Label Content="Fase di scelta Nome e Personaggio" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="247,8,0,0" FontSize="20" FontWeight="Bold"/>
-        <Image Margin="105,126,588.6,194" Source="1.png" Stretch="Fill"/>
-        <Image Margin="257,126,436.6,194" Source="2.png" Stretch="Fill"/>
-        <Image Margin="409,126,284.6,194" Source="3.png" Stretch="Fill"/>
-        <Image Margin="554,126,139.6,194" Source="4.png" Stretch="Fill"/>
+        <Image Margin="105,126,588.6,194" Source="/1.png" Stretch="Fill"/>
+        <Image Margin="257,126,436.6,194" Source="/2.png" Stretch="Fill"/>
+        <Image Margin="409,126,284.6,194" Source="/3.png" Stretch="Fill"/>
+        <Image Margin="554,126,139.6,194" Source="/4.png" Stretch="Fill"/>
         <Button x:Name="btnConferma" Content="Conferma e Inizia" HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Margin="315,333,0,0" Height="56" Click="btnConferma_Click_1"/>
 
     </Grid>
