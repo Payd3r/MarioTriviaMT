@@ -22,13 +22,12 @@ namespace Temp
     public partial class MainWindow : Window
     {
         Condivisa c;
+        Thread t;
         public MainWindow()
         {
-            InitializeComponent();
-            Minimappa m = new Minimappa("paolo", "1", "andrea", "2", c);
-           
-            c = new Condivisa();                
-            Thread t = new Thread(controlla);
+            InitializeComponent();           
+            c = new Condivisa();
+            t = new Thread(controlla);
             t.Start();
         }
         private void controlla()
@@ -49,6 +48,7 @@ namespace Temp
             c.BufferInviare.Add("a;101.58.47.192");
             c.indirizzo = txtIndirizzo.Text;
             c.startServer();
+            t.Abort();
             ConnessioneDaInterno();
         }
         private void ConnessioneDaEsterno()
@@ -63,20 +63,20 @@ namespace Temp
             if (dialogResult == MessageBoxResult.Yes)
             {
                 c.BufferInviare.Add("y;");
-                string s = c.prendi();
-                if (s.ElementAt(0) == 'y')
-                {
-                    c.BufferInviare.Add("y;");
-                    MessageBox.Show("Connessione iniziata!");
-                    MessageBox.Show("Attesa pick dell'avversario!");
-                    //connessione creata con successo, via richiesta esterna
-                }
-                else if (s.ElementAt(0) == 'n')
-                {
-                    MessageBox.Show("Qualcosa e' andato storto!");
-                    txtIndirizzo.Text = "";
-                    c.indirizzo = "";
-                }
+                //string s = c.prendi();
+                //if (s.ElementAt(0) == 'y')
+                //{
+                //  c.BufferInviare.Add("y;");
+                MessageBox.Show("Connessione iniziata!");
+                MessageBox.Show("Attesa pick dell'avversario!");
+                //connessione creata con successo, via richiesta esterna
+                //}
+                //else if (s.ElementAt(0) == 'n')
+                //{
+                //   MessageBox.Show("Qualcosa e' andato storto!");
+                //    txtIndirizzo.Text = "";
+                //    c.indirizzo = "";
+                //}
             }
             else if (dialogResult == MessageBoxResult.No)
             {
@@ -84,10 +84,7 @@ namespace Temp
                 MessageBox.Show("Connessione rifiutata!");
                 txtIndirizzo.Text = "";
                 c.indirizzo = "";
-            }
-            FasePick a = new FasePick(false, c);
-            a.Show();
-            this.Close();
+            }          
         }
         private void ConnessioneDaInterno()
         {
@@ -99,16 +96,16 @@ namespace Temp
             string s = c.prendi();
             if (s.ElementAt(0) == 'y')
             {
-                c.BufferInviare.Add("y;");
-                string s1 = c.prendi();
-                if (s1.ElementAt(0) == 'y')
-                    MessageBox.Show("Connessione iniziata!");
-                else if (s1.ElementAt(0) == 'n')
-                {
-                    MessageBox.Show("Qualcosa e' andato storto!");
-                    txtIndirizzo.Text = "";
-                    c.indirizzo = "";
-                }
+                //c.BufferInviare.Add("y;");
+                //string s1 = c.prendi();
+                //if (s1.ElementAt(0) == 'y')
+                MessageBox.Show("Connessione iniziata!");
+                // else if (s1.ElementAt(0) == 'n')
+                //{
+                //   MessageBox.Show("Qualcosa e' andato storto!");
+                //    txtIndirizzo.Text = "";
+                //   c.indirizzo = "";
+                //}
             }
             else if (s.ElementAt(0) == 'n')
             {
@@ -117,6 +114,14 @@ namespace Temp
                 c.indirizzo = "";
             }
             FasePick a = new FasePick(true, c);
+            a.Show();
+            this.Close();
+        }
+
+
+        private void btnEsci_Click(object sender, RoutedEventArgs e)
+        {
+            FasePick a = new FasePick(false, c);
             a.Show();
             this.Close();
         }

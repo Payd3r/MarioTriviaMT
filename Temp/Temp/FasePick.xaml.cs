@@ -51,12 +51,12 @@ namespace Temp
                     c.BufferInviare.Add("p;" + nome1 + ";" + skin1);
                     Minimappa a = new Minimappa(nome1, skin1.ToString(), c);
                     a.Show();
-                    this.Hide();
+                    this.Close();
                 }
             }
             else
             {
-                string s1 = c.prendi();
+                string s1 = "s;andrea;2";
                 if (s1.ElementAt(0) == 's')
                 {
                     nome2 = s1.Split(';')[1];
@@ -66,7 +66,7 @@ namespace Temp
                     MessageBox.Show("Devi scegliere una skin per iniziare");
                 else if (nome1 == "")
                     MessageBox.Show("Devi inserire un nome per iniziare");
-                else if (skin1 != Convert.ToInt32(skin2))
+                else if (skin1 == Convert.ToInt32(skin2))
                 {
                     MessageBox.Show("Skin gia' pikkata!");
                     skin1 = 0;
@@ -80,7 +80,7 @@ namespace Temp
                 {
                     Minimappa a = new Minimappa(nome1, skin1.ToString(), nome2, skin2.ToString(), c);
                     a.Show();
-                    this.Hide();
+                    this.Close();
                 }
             }
         }

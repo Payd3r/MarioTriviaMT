@@ -1,4 +1,3 @@
-D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.csproj.AssemblyReference.cache
 D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\MainWindow.g.cs
 D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GamecartaForbiceSasso.g.cs
 D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Minigames\GameImmagine.g.cs
@@ -65,3 +64,4 @@ C:\Users\Paolo\Source\Repos\MarioTriviaMT\Temp\Temp\obj\Debug\Minimappa.g.cs
 C:\Users\Paolo\Source\Repos\MarioTriviaMT\Temp\Temp\obj\Debug\FasePick.baml
 C:\Users\Paolo\Source\Repos\MarioTriviaMT\Temp\Temp\obj\Debug\Minimappa.baml
 C:\Users\Paolo\source\repos\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.csprojAssemblyReference.cache
+D:\File\Scuola\Superiori\    5superiore\Tecnologie\MarioTriviaMT\Temp\Temp\obj\Debug\Temp.csproj.AssemblyReference.cache

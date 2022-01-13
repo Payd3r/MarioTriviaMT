@@ -12,5 +12,6 @@
         <Button Content="Connettiti" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="169,116,0,0" Height="33" Click="Button_Click"/>
         <Label Content="Inizia una connessione" HorizontalAlignment="Left" VerticalAlignment="Top" Width="288" Margin="111,17,0,0" FontSize="16" FontWeight="Bold"/>
         <Label x:Name="info" Content="" Margin="40,166,38,17"/>
+        <Button x:Name="btnEsci" Content="Esci" Margin="357,0,0,145" Click="btnEsci_Click"/>
     </Grid>
 </Window>

@@ -40,7 +40,7 @@ namespace Temp
                     server.Send(data, data.Length, indirizzo, 12346);
                     BufferInviare.RemoveAt(0);
                 }
-                Thread.Sleep(100);
+                Thread.Sleep(1);
             }
         }
 
@@ -50,11 +50,8 @@ namespace Temp
             {
                 UdpClient listener = new UdpClient(12345);
                 IPEndPoint riceveEP = new IPEndPoint(IPAddress.Any, 0);
-                while (BufferRicevuti.Last() == "")
-                {
-                    byte[] dataReceived = listener.Receive(ref riceveEP);
-                    BufferRicevuti.Add(Encoding.ASCII.GetString(dataReceived));
-                }
+                byte[] dataReceived = listener.Receive(ref riceveEP);
+                BufferRicevuti.Add(Encoding.ASCII.GetString(dataReceived));
             }
             catch (Exception)
             {
@@ -77,6 +74,7 @@ namespace Temp
                 catch (Exception)
                 {
                 }
+                Thread.Sleep(1);
             }
         }
     }

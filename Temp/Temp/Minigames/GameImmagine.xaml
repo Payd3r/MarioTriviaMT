@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Temp.Minigames"
         mc:Ignorable="d"
         Title="GameImmagine" Height="427.067" Width="768.533">
-    <Grid>
+    <Grid Background="#FFFFAC57">
         <Image x:Name="imgPrincipale" HorizontalAlignment="Left" Height="143" VerticalAlignment="Top" Width="137" Margin="314,14,0,0"/>
         <Image x:Name="img1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="44,175,0,0"/>
         <Image x:Name="img2" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Margin="243,175,0,0"/>
@@ -18,7 +18,7 @@
         <RadioButton x:Name="scelta2" Content="Immagine 2" Margin="249,315,412,24" GroupName="immagini" Checked="scelta2_Checked" FontFamily="Papyrus"/>
         <RadioButton x:Name="scelta3" Content="Immagine 3" Margin="447,315,215,24" GroupName="immagini" Checked="scelta3_Checked" FontFamily="Papyrus"/>
         <RadioButton x:Name="scelta4" Content="Immagine 4" Margin="630,315,33,24" GroupName="immagini" Checked="scelta4_Checked" FontFamily="Papyrus"/>
-        <Button x:Name="btnInvio" Content="Invio" Margin="303,354,327,0" Click="btnInvio_Click" FontFamily="Papyrus" Background="#FFE6E6E6"/>
+        <Button x:Name="btnInvio" Content="Invio" Margin="308,344,322,10" Click="btnInvio_Click" FontFamily="Papyrus" Background="#FFE6E6E6"/>
 
     </Grid>
 </Window>

@@ -106,7 +106,7 @@ namespace Temp
                     //anche l'altro ha azzeccato
                     Uesterno.numMonete += 10;
             mappa.Show();
-            this.Hide();
+            this.Close();
         }
         private void indovina()
         {

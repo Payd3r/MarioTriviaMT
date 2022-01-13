@@ -37,28 +37,27 @@ namespace Temp
             InitializeComponent();
             this.ResizeMode = ResizeMode.NoResize;
             c = cond;
-            estrazione = 0;
             rnd = new Random();
-           // c.startServer();
+            // c.startServer();
             //inserisco informazioni utente locale
             Ulocale = new Utente(nome1, skin1);
             //richiedi informazioni per crare l'altro utente(nick, skin, turno)
             Uesterno = new Utente(nome2, skin2);
             //imposto il turno
-            Ulocale.turno = true;
+            Ulocale.turno = false;
             //inizializzazione parte visiva
             inizializeParteVisiva();
-
         }
         public Minimappa(string nome1, string skin1, Condivisa cond)
         {
             //e' il mio turno
             InitializeComponent();
             c = cond;
+            estrazione = 0;
             //inserisco informazioni utente locale
             Ulocale = new Utente(nome1, skin1);
             //richiedi informazioni per crare l'altro utente(nick, skin, turno)
-            string s = c.prendi();
+            string s = "p;andrea;2";
             if (s.ElementAt(0) == 'p')
             {
                 string[] vet = s.Split(';');
@@ -71,6 +70,7 @@ namespace Temp
             }
             //imposto il turno in base a chi ha richiesto la connessione
             Ulocale.turno = true;
+            inizializeParteVisiva();
         }
         private void inizializeParteVisiva()
         {
@@ -104,18 +104,30 @@ namespace Temp
                 Random rnd = new Random();
                 estrazione = rnd.Next(1, 7);
                 MessageBox.Show("Il numero uscito e' " + estrazione + "!");
-                //c.BufferInviare.Add("s;" + estrazione);                
-                int num = muoviPersonaggi(estrazione);
-                if (num == -1)
-                {
-                    MessageBox.Show("Gioco finito!");
-                    this.Close();
-                }
-                while (controlloPos(num)) ;
-                //Ulocale.turno = false;
+                c.BufferInviare.Add("s;" + estrazione);
+                fai();
+                Ulocale.turno = false;
             }
             else
+            {
                 MessageBox.Show("Non e' il tuo turno!");
+                string s = c.prendi();
+                if (s.ElementAt(0) == 's')
+                {
+                    estrazione = Convert.ToInt32(s.Split(';')[1]);
+                    fai();
+                }
+            }
+        }
+        private void fai()
+        {
+            int num = muoviPersonaggi(estrazione);
+            if (num == -1)
+            {
+                MessageBox.Show("Gioco finito!");
+                this.Close();
+            }
+            while (controlloPos(num)) ;
         }
         private int muoviPersonaggi(int num)
         {

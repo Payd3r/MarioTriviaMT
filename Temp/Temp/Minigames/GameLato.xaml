@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Temp.Minigames"
         mc:Ignorable="d"
         Title="GameLato" Height="450" Width="800">
-    <Grid Background="White">
+    <Grid Background="#FF878787">
         <Button x:Name="btn3" Content="SINISTRA" HorizontalAlignment="Left" Margin="54,217,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn3_Click" FontFamily="Ravie" Foreground="White" Background="#FF3A833A"/>
         <Button x:Name="btn2" Content="GIU" HorizontalAlignment="Left" Margin="147,285,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn2_Click" Background="#FFA04242" FontFamily="Ravie" Foreground="White"/>
         <Button x:Name="btn1" Content="SU" HorizontalAlignment="Left" Margin="147,149,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn1_Click" Background="#FFC3AE25" FontFamily="Ravie" Foreground="White"/>
