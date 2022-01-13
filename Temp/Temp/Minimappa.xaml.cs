@@ -107,13 +107,13 @@ namespace Temp
                 int estrazione = rnd.Next(1, 7);
                 MessageBox.Show("Il numero uscito e' " + estrazione + "!");
                 //c.BufferInviare.Add("s;" + estrazione);                
-                int num = muoviPersonaggi(estrazione);
+                int num = muoviPersonaggi(1);
                 if (num == -1)
                 {
                     MessageBox.Show("Gioco finito!");
                     this.Close();
                 }
-                controlloPos(num);
+                //controlloPos(num);
                 //Ulocale.turno = false;
             }
             else

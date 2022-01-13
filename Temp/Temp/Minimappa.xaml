@@ -5,16 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Temp"
         mc:Ignorable="d"
-        Title="Minimappa" Height="961" Width="1174">
+        Title="Minimappa" Height="750" Width="1633">
     <Grid>
-        <Image Margin="0,1,0,-3" Source="/mapa.jpg"/>
 
-        <Button x:Name="btnDado" Content="Tira il dado" HorizontalAlignment="Left" VerticalAlignment="Top" Width="190" Margin="845,810,0,0" Height="80" Click="btnDado_Click"/>
-        <Label x:Name="nick1" Content="" Margin="352,680,657,215"/>
-        <Label x:Name="nick2" Content="" Margin="352,827,657,72"/>
-        <Label x:Name="monete1" Content="" Margin="578,673,552,209"/>
-        <Label x:Name="monete2" Content="" Margin="575,819,548,64"/>
-        <Canvas x:Name="canvas" Margin="39,83,33,345">
+        <Image Source="/mapa.jpg" Margin="12,14,0,26"/>
+
+        <Button x:Name="btnDado" Content="Tira il dado" HorizontalAlignment="Left" VerticalAlignment="Top" Width="161" Margin="1438,558,0,0" Height="46" Click="btnDado_Click"/>
+        <Label x:Name="nick1" Content="" Margin="1234,134,213,529"/>
+        <Label x:Name="nick2" Content="" Margin="1236,265,211,412"/>
+        <Label x:Name="monete1" Content="" Margin="1515,139,69,534" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label x:Name="monete2" Content="" Margin="1509,265,71,411" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Canvas x:Name="canvas" Margin="53,83,500,87" Width="1102" Height="517.04">
             <Image x:Name="skin1" Height="41" Canvas.Left="3" Canvas.Top="22" Width="47"/>
             <Image x:Name="skin2" Height="39" Canvas.Left="32" Canvas.Top="24" Width="43"/>
         </Canvas>

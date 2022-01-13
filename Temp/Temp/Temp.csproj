@@ -160,9 +160,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mappa.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="mapa.jpg" />
   </ItemGroup>
   <ItemGroup>
