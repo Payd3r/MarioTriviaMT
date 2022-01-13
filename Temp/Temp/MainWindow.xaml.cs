@@ -25,6 +25,8 @@ namespace Temp
         public MainWindow()
         {
             InitializeComponent();
+            Minimappa m = new Minimappa("paolo", "1", "andrea", "2", c);
+           
             c = new Condivisa();                
             Thread t = new Thread(controlla);
             t.Start();

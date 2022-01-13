@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:Temp.Minigames"
         mc:Ignorable="d"
         Title="GameLato" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="btn3" Content="SINISTRA" HorizontalAlignment="Left" Margin="52,217,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn3_Click"/>
-        <Button x:Name="btn2" Content="GIU" HorizontalAlignment="Left" Margin="147,285,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn2_Click"/>
-        <Button x:Name="btn1" Content="SU" HorizontalAlignment="Left" Margin="147,149,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn1_Click"/>
-        <Button x:Name="btn4" Content="DESTRA" HorizontalAlignment="Left" Margin="244,217,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn4_Click"/>
+    <Grid Background="White">
+        <Button x:Name="btn3" Content="SINISTRA" HorizontalAlignment="Left" Margin="54,217,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn3_Click" FontFamily="Ravie" Foreground="White" Background="#FF3A833A"/>
+        <Button x:Name="btn2" Content="GIU" HorizontalAlignment="Left" Margin="147,285,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn2_Click" Background="#FFA04242" FontFamily="Ravie" Foreground="White"/>
+        <Button x:Name="btn1" Content="SU" HorizontalAlignment="Left" Margin="147,149,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn1_Click" Background="#FFC3AE25" FontFamily="Ravie" Foreground="White"/>
+        <Button x:Name="btn4" Content="DESTRA" HorizontalAlignment="Left" Margin="244,217,0,0" VerticalAlignment="Top" Width="75" Height="72" Click="btn4_Click" FontFamily="Ravie" Background="#FF406CCB" Foreground="White"/>
         <Label x:Name="content" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Margin="55,10,0,0"/>
         <Label x:Name="secondi" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="288,10,0,0" Width="31"/>
         <Image x:Name="img1" HorizontalAlignment="Left" Height="100" Margin="451,69,0,0" VerticalAlignment="Top" Width="100"/>

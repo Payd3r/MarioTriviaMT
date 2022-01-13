@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Temp.Minigames"
         mc:Ignorable="d"
         Title="GameTris" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#FF399B84">
         <Label x:Name="content" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Margin="273,10,0,0"/>
         <Label x:Name="secondi" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="506,10,0,0" Width="31"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="305" Margin="294,69,0,0" Stroke="Black" VerticalAlignment="Top" Width="5"/>
@@ -31,7 +31,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Button x:Name="btn1" Content="" HorizontalAlignment="Left" Margin="204,63,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn1_Click"/>
+        <Button x:Name="btn1" Content="" HorizontalAlignment="Left" Margin="204,63,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn1_Click" Foreground="Black"/>
         <Button x:Name="btn2" Content="" HorizontalAlignment="Left" Margin="316,63,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn2_Click"/>
         <Button x:Name="btn3" Content="" HorizontalAlignment="Left" Margin="430,63,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn3_Click"/>
         <Button x:Name="btn6" Content="" HorizontalAlignment="Left" Margin="430,177,0,0" VerticalAlignment="Top" Width="85" Height="79" Click="btn6_Click"/>

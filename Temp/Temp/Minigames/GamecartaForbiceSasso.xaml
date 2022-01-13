@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:Temp.Minigames"
         mc:Ignorable="d"
         Title="GamecartaForbiceSasso" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#FFBAE0B8">
         <Label x:Name="secondi" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="500,20,0,0" Width="99" Height="39"/>
         <Label x:Name="content" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="297" Margin="183,20,0,0" Height="39"/>
         <Image x:Name="immagineMia" HorizontalAlignment="Left" Height="189" VerticalAlignment="Top" Width="225" Margin="83,64,0,0"/>
         <Image x:Name="immagineAltro" HorizontalAlignment="Left" Height="189" VerticalAlignment="Top" Width="225" Margin="470,64,0,0"/>
-        <Button x:Name="btnInvio" Content="Invio" Margin="144,354,534,24" Click="btnInvio_Click"/>
-        <RadioButton x:Name="carta" Content="Carta" Margin="54,285,649,67" GroupName="segni" Checked="carta_Checked"/>
-        <RadioButton x:Name="forbice" Content="Forbice" Margin="169,285,534,67" GroupName="segni" Checked="forbice_Checked"/>
-        <RadioButton x:Name="sasso" Content="Sasso" Margin="283,285,420,67" GroupName="segni" Checked="sasso_Checked"/>
+        <Button x:Name="btnInvio" Content="INVIO" Margin="144,354,534,24" Click="btnInvio_Click" Background="#FFABC988" BorderBrush="#FF99B28D" Foreground="#FF101110" FontFamily="Cooper Black"/>
+        <RadioButton x:Name="carta" Content="Carta" Margin="55,286,648,66" GroupName="segni" Checked="carta_Checked" Background="#FFF9F9F9" FontFamily="Felix Titling"/>
+        <RadioButton x:Name="forbice" Content="FORBICE" Margin="169,285,534,67" GroupName="segni" Checked="forbice_Checked" Background="#FFE85353" FontFamily="Viner Hand ITC"/>
+        <RadioButton x:Name="sasso" Content="Sasso" Margin="283,285,420,67" GroupName="segni" Checked="sasso_Checked" Background="#FF898989" FontFamily="Showcard Gothic"/>
 
     </Grid>
 </Window>

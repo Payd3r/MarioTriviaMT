@@ -39,7 +39,7 @@ namespace Temp
             c = cond;
             estrazione = 0;
             rnd = new Random();
-            c.startServer();
+           // c.startServer();
             //inserisco informazioni utente locale
             Ulocale = new Utente(nome1, skin1);
             //richiedi informazioni per crare l'altro utente(nick, skin, turno)
@@ -276,23 +276,23 @@ namespace Temp
                         GameMelanzane a = new GameMelanzane(Ulocale, Uesterno, c, this);
                         a.Show();
                         break;
-                    case 5:
+                    case 14:
                         GamePesca b = new GamePesca(Ulocale, Uesterno, c, this);
                         b.Show();
                         break;
-                    case 6:
+                    case 27:
                         GameLato l = new GameLato(Ulocale, Uesterno, c, this);
                         l.Show();
                         break;
-                    case 8:
+                    case 31:
                         GameImmagine d = new GameImmagine(Ulocale, Uesterno, c, this);
                         d.Show();
                         break;
-                    case 4:
+                    case 34:
                         GamecartaForbiceSasso e = new GamecartaForbiceSasso(Ulocale, Uesterno, c, this);
                         e.Show();
                         break;
-                    case 10:
+                    case 54:
                         GameTris f = new GameTris(Ulocale, Uesterno, c, this);
                         f.Show();
                         break;

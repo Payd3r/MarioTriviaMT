@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Temp.Minigames
 {
@@ -20,12 +21,19 @@ namespace Temp.Minigames
     {
         Stopwatch stopwatch = new Stopwatch();
         Utente Ulocale;
+        Random rnd;
         Utente Uesterno;
         Condivisa c;
         Minimappa mappa;
-        bool puoiGiocare;
+        DispatcherTimer dispatcherTimer;
+        Stopwatch stopWatch;
+        TimeSpan ts;
         int scelta;
-        string[] vettore;
+        int estrazione;
+        int i = 0;
+        string[] vettore = { "", "", "", "" };
+
+        string s = "";
         public GameLato()
         {
             InitializeComponent();
@@ -35,36 +43,50 @@ namespace Temp.Minigames
             InitializeComponent();
             Ulocale = a;
             Uesterno = b;
-            puoiGiocare = false;
+
             c = cond;
             mappa = ma;
             scelta = 0;
+            stopWatch = new Stopwatch();
+            dispatcherTimer = new DispatcherTimer();
+            stopWatch.Start();
+            dispatcherTimer.Start();
+            content.Content = "Il minigioco inizia a 10 sec ";
+            dispatcherTimer.Tick += new EventHandler(dt_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            btn1.Visibility = Visibility.Hidden;
+            btn2.Visibility = Visibility.Hidden;
+            btn3.Visibility = Visibility.Hidden;
+            btn4.Visibility = Visibility.Hidden;
+            Ulocale.turno = true;
             if (Ulocale.turno)
-                c.BufferInviare.Add("P;" + creavettore());
+            {
+                 c.BufferInviare.Add("P;" + creavettore());
+                
+            }
+
             else
             {
-                string[] s = c.prendi().Split(';');
-                if (s[0] == "P")
+                string[] messa = c.prendi().Split(';');
+                if (messa[0] == "P")
                 {
-                    vettore = s[1].Split(',');
+                    vettore = messa[1].Split(',');
                 }
             }
-            Thread tempo = new Thread(Timer);
-            tempo.Start();
 
-            gioca();
-            mappa.Show();
-            this.Hide();
+
+
+            
         }
         private string creavettore()
         {
-            string s = "";
+            s = "P;";
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
 
                 Random rnd = new Random();
-                int estrazione = rnd.Next(0, 4);
+                estrazione = rnd.Next(1, 5);
                 if (estrazione == 1)
                 {
                     vettore[i] = "1";
@@ -92,106 +114,139 @@ namespace Temp.Minigames
             }
             return s;
         }
-        private void Timer()
+        void dt_Tick(object sender, EventArgs e)
         {
-            while (stopwatch.ElapsedMilliseconds < 10000)
+            if (stopWatch.IsRunning)
             {
-                stampa();
-                Thread.Sleep(1000);
+                ts = stopWatch.Elapsed;
+                secondi.Content = ts.Seconds;
+            }
+            if (ts.Seconds > 5)
+            {
+                stopWatch.Stop();
+                avanti();
             }
         }
-        private void stampa()
+        private void avanti()
         {
-            if (!CheckAccess())
-                Dispatcher.Invoke(() => { stampa(); });
-            else
-                secondi.Content = 10 - (stopwatch.ElapsedMilliseconds / 1000);
+            btn1.Visibility = Visibility.Visible;
+            btn2.Visibility = Visibility.Visible;
+            btn3.Visibility = Visibility.Visible;
+            btn4.Visibility = Visibility.Visible;
+            content.Content = "Seleziona la tua mossa in 10 sec";
+            secondi.Content = "";
+            if(i==0)
+            gioca();
+           
         }
         void gioca()
         {
-            for (int i = 0; i < 4; i++)
+
+            if (vettore[i] == "1")
             {
-                if (vettore[i] == "1")
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    //principale
+                BitmapImage bitmap = new BitmapImage();
+                //principale
 
-                    img1.Source = null;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia2.png");
-                    bitmap.EndInit();
-                    img2.Source = bitmap;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia3.png");
-                    bitmap.EndInit();
-                    img3.Source = bitmap;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia4.png");
-                    bitmap.EndInit();
-                    img4.Source = bitmap;
-                }
-                else if (vettore[i] == "2")
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    //principale
-                    img2.Source = null;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia1.png");
-                    bitmap.EndInit();
-                    img1.Source = bitmap;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia3.png");
-                    bitmap.EndInit();
-                    img3.Source = bitmap;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia4.png");
-                    bitmap.EndInit();
-                    img4.Source = bitmap;
-                }
-                else if (vettore[i] == "3")
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    //principale
-                    img3.Source = null;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia2.png");
-                    bitmap.EndInit();
-                    img2.Source = bitmap;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia1.png");
-                    bitmap.EndInit();
-                    img1.Source = bitmap;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia4.png");
-                    bitmap.EndInit();
-                    img4.Source = bitmap;
-                }
-                else if (vettore[i] == "4")
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    //principale
-                    img4.Source = null;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia2.png");
-                    bitmap.EndInit();
-                    img2.Source = bitmap;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia3.png");
-                    bitmap.EndInit();
-                    img3.Source = bitmap;
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia1.png");
-                    bitmap.EndInit();
-                    img1.Source = bitmap;
-                }
+                img1.Source = null;
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia2.png");
+                bitmap.EndInit();
+                img2.Source = bitmap;
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia3.png");
+                bitmap.EndInit();
+                img3.Source = bitmap;
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia4.png");
+                bitmap.EndInit();
+                img4.Source = bitmap;
+            }
+            else if (vettore[i] == "2")
+            {
+                BitmapImage bitmap = new BitmapImage();
+                //principale
+                img2.Source = null;
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia1.png");
+                bitmap.EndInit();
+                img1.Source = bitmap;
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia3.png");
+                bitmap.EndInit();
+                img3.Source = bitmap;
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia4.png");
+                bitmap.EndInit();
+                img4.Source = bitmap;
+            }
+            else if (vettore[i] == "3")
+            {
+                BitmapImage bitmap = new BitmapImage();
+                //principale
+                img3.Source = null;
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia2.png");
+                bitmap.EndInit();
+                img2.Source = bitmap;
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia1.png");
+                bitmap.EndInit();
+                img1.Source = bitmap;
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia4.png");
+                bitmap.EndInit();
+                img4.Source = bitmap;
+            }
+            else if (vettore[i] == "4")
+            {
+                BitmapImage bitmap = new BitmapImage();
+                //principale
+                img4.Source = null;
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia2.png");
+                bitmap.EndInit();
+                img2.Source = bitmap;
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia3.png");
+                bitmap.EndInit();
+                img3.Source = bitmap;
+                bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia1.png");
+                bitmap.EndInit();
+                img1.Source = bitmap;
+            }
 
-                content.Content = "Scegli la tua mossa! Entro ";
-                Thread tempo = new Thread(Timer);
-                tempo.Start();
-                puoiGiocare = true;
-                //potrebbe bloccare il thread corrente quindi non funzionano i bottoni
-                tempo.Join();
-                puoiGiocare = false;
+            content.Content = "Scegli la tua mossa! Entro ";
+            
+            i++;
+            //potrebbe bloccare il thread corrente quindi non funzionano i bottoni
+
+
+
+            
+        }
+
+        private void btn3_Click(object sender, RoutedEventArgs e)
+        {
+            if (i == 4)
+            {
+                 string[] s = c.prendi().Split(';');
+                if (s[0] == "L")
+                  Uesterno.numMonete += Convert.ToInt32(s[1]);
+                mappa.Show();
+                this.Hide();
+            }
+            else
+            {
+                scelta = 3;
                 if (scelta == Convert.ToInt32(vettore[i]))
                 {
                     Ulocale.numMonete += 2;
@@ -200,34 +255,82 @@ namespace Temp.Minigames
                 {
                     Ulocale.numMonete -= 2;
                 }
+                gioca();
             }
-            string[] s = c.prendi().Split(';');
-            if (s[0] == "L")
-                Uesterno.numMonete += Convert.ToInt32(s[1]);
-        }
-
-        private void btn3_Click(object sender, RoutedEventArgs e)
-        {
-            if (puoiGiocare)
-                scelta = 3;
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-            if (puoiGiocare)
+            if (i == 4) {
+                string[] s = c.prendi().Split(';');
+                if (s[0] == "L")
+                    Uesterno.numMonete += Convert.ToInt32(s[1]);
+                mappa.Show();
+                this.Hide();
+            }
+            else
+            {
                 scelta = 1;
+                if (scelta == Convert.ToInt32(vettore[i]))
+                {
+                    Ulocale.numMonete += 2;
+                }
+                else
+                {
+                    Ulocale.numMonete -= 2;
+                }
+                gioca();
+            }
         }
 
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
-            if (puoiGiocare)
+            if (i == 4)
+            {
+                string[] s = c.prendi().Split(';');
+                if (s[0] == "L")
+                    Uesterno.numMonete += Convert.ToInt32(s[1]);
+                mappa.Show();
+                this.Hide();
+            }
+            else
+            {
                 scelta = 4;
+                if (scelta == Convert.ToInt32(vettore[i]))
+                {
+                    Ulocale.numMonete += 2;
+                }
+                else
+                {
+                    Ulocale.numMonete -= 2;
+                }
+                gioca();
+            }
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
-            if (puoiGiocare)
+            if (i == 4)
+            {
+                string[] s = c.prendi().Split(';');
+                if (s[0] == "L")
+                    Uesterno.numMonete += Convert.ToInt32(s[1]);
+                mappa.Show();
+                this.Hide();
+            }
+            else
+            {
                 scelta = 2;
+                if (scelta == Convert.ToInt32(vettore[i]))
+                {
+                    Ulocale.numMonete += 2;
+                }
+                else
+                {
+                    Ulocale.numMonete -= 2;
+                }
+                gioca();
+            }
         }
     }
 }
