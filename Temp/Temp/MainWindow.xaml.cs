@@ -25,7 +25,7 @@ namespace Temp
         Thread t;
         public MainWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
             c = new Condivisa();
             t = new Thread(controlla);
             t.Start();
@@ -44,8 +44,7 @@ namespace Temp
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //trovare un modo per capire il proprio indirizzo
-            c.BufferInviare.Add("a;101.58.47.192");
+            c.BufferInviare.Add("a;127.0.0.1");
             c.indirizzo = txtIndirizzo.Text;
             c.startServer();
             t.Abort();
@@ -57,26 +56,18 @@ namespace Temp
             //invio y; | n;
             //aspetto che mi rispoda
             //ricevo y; | n;
-            //invio y; | n; di conferma
             //aspetto che mi risponda con le sue info nome;skin
             MessageBoxResult dialogResult = MessageBox.Show("Vuoi accettare la connessione?", "Nuova connessione", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes)
             {
                 c.BufferInviare.Add("y;");
-                //string s = c.prendi();
-                //if (s.ElementAt(0) == 'y')
-                //{
-                //  c.BufferInviare.Add("y;");
                 MessageBox.Show("Connessione iniziata!");
-                MessageBox.Show("Attesa pick dell'avversario!");
-                //connessione creata con successo, via richiesta esterna
-                //}
-                //else if (s.ElementAt(0) == 'n')
-                //{
-                //   MessageBox.Show("Qualcosa e' andato storto!");
-                //    txtIndirizzo.Text = "";
-                //    c.indirizzo = "";
-                //}
+                this.Dispatcher.Invoke(() =>
+                {
+                    FasePick a = new FasePick(false, c);
+                    a.Show();
+                    this.Close();
+                });
             }
             else if (dialogResult == MessageBoxResult.No)
             {
@@ -84,28 +75,20 @@ namespace Temp
                 MessageBox.Show("Connessione rifiutata!");
                 txtIndirizzo.Text = "";
                 c.indirizzo = "";
-            }          
+            }
         }
         private void ConnessioneDaInterno()
         {
             //dopo aver mandato una richiesta di connessione attendo la risposta
+            //invio a; 
             //ricevo y; | n;
             //invio y; | n; se no errori
-            //ricevo y; | n;
             //inizio la connessione e apro la pick phase
             string s = c.prendi();
             if (s.ElementAt(0) == 'y')
             {
-                //c.BufferInviare.Add("y;");
-                //string s1 = c.prendi();
-                //if (s1.ElementAt(0) == 'y')
+                c.BufferInviare.Add("y;");
                 MessageBox.Show("Connessione iniziata!");
-                // else if (s1.ElementAt(0) == 'n')
-                //{
-                //   MessageBox.Show("Qualcosa e' andato storto!");
-                //    txtIndirizzo.Text = "";
-                //   c.indirizzo = "";
-                //}
             }
             else if (s.ElementAt(0) == 'n')
             {
@@ -114,14 +97,6 @@ namespace Temp
                 c.indirizzo = "";
             }
             FasePick a = new FasePick(true, c);
-            a.Show();
-            this.Close();
-        }
-
-
-        private void btnEsci_Click(object sender, RoutedEventArgs e)
-        {
-            FasePick a = new FasePick(false, c);
             a.Show();
             this.Close();
         }

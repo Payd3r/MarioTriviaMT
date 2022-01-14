@@ -56,11 +56,11 @@ namespace Temp
             }
             else
             {
-                string s1 = "s;andrea;2";
-                if (s1.ElementAt(0) == 's')
+                string[] vet = c.prendi().Split(';');
+                if (vet[0] == "p")
                 {
-                    nome2 = s1.Split(';')[1];
-                    skin2 = s1.Split(';')[2];
+                    nome2 = vet[1];
+                    skin2 = vet[2];
                 }
                 if (skin1 == 0)
                     MessageBox.Show("Devi scegliere una skin per iniziare");
@@ -78,6 +78,7 @@ namespace Temp
                 }
                 else
                 {
+                    c.BufferInviare.Add("p;" + nome1 + ";" + skin1);
                     Minimappa a = new Minimappa(nome1, skin1.ToString(), nome2, skin2.ToString(), c);
                     a.Show();
                     this.Close();

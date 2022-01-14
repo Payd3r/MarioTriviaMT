@@ -309,7 +309,7 @@ namespace Temp.Minigames
                 mappa.Show();
                 this.Hide();
             }
-        }               
+        }
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
             scelta = 4;
@@ -415,23 +415,24 @@ namespace Temp.Minigames
 
         private void btn9_Click(object sender, RoutedEventArgs e)
         {
-        {
-            scelta = 9;
-            gioca();
-            vittoria = CheckWin();
-            if (vittoria == 1)
             {
-                MessageBox.Show("Hai vinto!");
-                Ulocale.numMonete += 10;
-                mappa.Show();
-                this.Hide();
-            }
-            else if (vittoria == 2)
-            {
-                MessageBox.Show("Hai perso!");
-                Uesterno.numMonete += 10;
-                mappa.Show();
-                this.Hide();
+                scelta = 9;
+                gioca();
+                vittoria = CheckWin();
+                if (vittoria == 1)
+                {
+                    MessageBox.Show("Hai vinto!");
+                    Ulocale.numMonete += 10;
+                    mappa.Show();
+                    this.Hide();
+                }
+                else if (vittoria == 2)
+                {
+                    MessageBox.Show("Hai perso!");
+                    Uesterno.numMonete += 10;
+                    mappa.Show();
+                    this.Hide();
+                }
             }
         }
     }

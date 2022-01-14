@@ -19,17 +19,12 @@ namespace Temp.Minigames
 {
     public partial class GameMelanzane : Window
     {
-        Stopwatch stopwatch = new Stopwatch();
         Minimappa mappa;
         Utente Ulocale;
         Utente Uesterno;
         Condivisa c;
-        int posizione;
-        int secondiLocale;
-        int secondiEsterno;
-        DispatcherTimer dispatcherTimer;
-        Stopwatch stopWatch;
-        TimeSpan ts;
+        int pos1;
+        int pos2;
         public GameMelanzane()
         {
             InitializeComponent();
@@ -41,69 +36,66 @@ namespace Temp.Minigames
             Uesterno = b;
             c = cond;
             mappa = ma;
-            posizione = 0;
-            secondiLocale = 0;
-            secondiEsterno = 0;
-            //inizio minigioco
-            stopWatch = new Stopwatch();
-            dispatcherTimer = new DispatcherTimer();
-            stopWatch.Start();
-            dispatcherTimer.Start();
-            content.Content = "Il minigioco inizia a 10 sec ";
-            dispatcherTimer.Tick += new EventHandler(dt_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            pos1 = 0;
+            pos2 = 0;
             //nascondi
             linea1.Visibility = Visibility.Hidden;
             linea2.Visibility = Visibility.Hidden;
             start.Visibility = Visibility.Hidden;
             finish.Visibility = Visibility.Hidden;
             btnAvanti.Visibility = Visibility.Hidden;
+            //inizio minigioco
+            content.Content = "Il minigioco inizia a 10 sec ";
+            Thread t2 = new Thread(thread);
+            t2.Start();
         }
-        void dt_Tick(object sender, EventArgs e)
+        private void thread()
         {
-            if (stopWatch.IsRunning)
+            Thread.Sleep(10000);
+            this.Dispatcher.Invoke(() =>
             {
-                ts = stopWatch.Elapsed;
-                secondi.Content = ts.Seconds;
-            }
-            if (ts.Seconds > 5)
-            {
+                //visualizza
                 linea1.Visibility = Visibility.Visible;
                 linea2.Visibility = Visibility.Visible;
                 start.Visibility = Visibility.Visible;
                 finish.Visibility = Visibility.Visible;
                 btnAvanti.Visibility = Visibility.Visible;
                 caricaImmagini();
-            }
-        }
-        private void conteggioPunti()
-        {
+            });
             string s = "";
-            int pos2 = 0;
-            while (s.ElementAt(0) == 'M')
+            while (true)
             {
-                s = c.prendi();
-                pos2++;
+                if (pos1 > 55)
+                {
+                    MessageBox.Show("Hai vinto!");
+                    Ulocale.numMonete += 10;
+                    Uesterno.numMonete -= 10;
+                    break;
+                }
+                if (pos2 > 55)
+                {
+                    MessageBox.Show("Hai perso!");
+                    Ulocale.numMonete -= 10;
+                    Uesterno.numMonete += 10;
+                    break;
+                }
+                if (c.BufferRicevuti.Count > 0)
+                {
+                    s = c.prendi();
+                    if (s.ElementAt(0) == 'M')
+                        pos2++;
+                    this.Dispatcher.Invoke(() =>
+                    {
+                        txtPosizione.Content = pos1 + " | " + pos2;
+                        spostaSkin();
+                    });
+                }
             }
-            secondiEsterno = Convert.ToInt32(secondi.Content.ToString());
-            if (pos2 < 100)
+            this.Dispatcher.Invoke(() =>
             {
-                MessageBox.Show("Hai vinto!");
-                Ulocale.numMonete += 10;
-                Uesterno.numMonete -= 10;
-            }
-            if (secondiLocale < secondiEsterno)
-            {
-                MessageBox.Show("Hai vinto!");
-                Ulocale.numMonete += 10;
-                Uesterno.numMonete -= 10;
-            }
-            else if (secondiLocale > secondiEsterno)
-            {
-                MessageBox.Show("Hai perso!");
-                Ulocale.numMonete -= 10;
-                Uesterno.numMonete += 10;
-            }
+                mappa.Show();
+                this.Close();
+            });
         }
         private void caricaImmagini()
         {
@@ -112,26 +104,26 @@ namespace Temp.Minigames
             bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\" + Ulocale.skin + ".png");
             bitmap.EndInit();
             locale.Source = bitmap;
+            bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\" + Uesterno.skin + ".png");
+            bitmap.EndInit();
+            esterno.Source = bitmap;
+            spostaSkin();
         }
         private void spostaSkin()
         {
-            Canvas.SetLeft(locale, posizione * 5);
+            Canvas.SetLeft(locale, pos1 * 7);
             Canvas.SetTop(locale, 20);
-            Canvas.SetLeft(locale, posizione * 5);
-            Canvas.SetTop(locale, 20);
+            Canvas.SetLeft(esterno, pos2 * 7);
+            Canvas.SetTop(esterno, 120);
         }
         private void btnAvanti_Click(object sender, RoutedEventArgs e)
         {
-            posizione++;
+            pos1++;
+            txtPosizione.Content = pos1 + " | " + pos2;
             c.BufferInviare.Add("M;avanti");
-            secondiLocale = Convert.ToInt32(secondi.Content);
             spostaSkin();
-            if (posizione == 100)
-            {
-                conteggioPunti();
-                mappa.Show();
-                this.Hide();
-            }
         }
     }
 }

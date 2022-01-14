@@ -37,24 +37,25 @@ namespace Temp
                 if (BufferInviare.Count > 0)
                 {
                     byte[] data = Encoding.ASCII.GetBytes(BufferInviare[0]);
-                    server.Send(data, data.Length, indirizzo, 12346);
+                    server.Send(data, data.Length, indirizzo, 12345);
                     BufferInviare.RemoveAt(0);
                 }
-                Thread.Sleep(1);
             }
         }
-
         private void client()
         {
-            try
+            UdpClient listener = new UdpClient(12346);
+            while (true)
             {
-                UdpClient listener = new UdpClient(12345);
-                IPEndPoint riceveEP = new IPEndPoint(IPAddress.Any, 0);
-                byte[] dataReceived = listener.Receive(ref riceveEP);
-                BufferRicevuti.Add(Encoding.ASCII.GetString(dataReceived));
-            }
-            catch (Exception)
-            {
+                try
+                {
+                    IPEndPoint riceveEP = new IPEndPoint(IPAddress.Any, 0);
+                    byte[] dataReceived = listener.Receive(ref riceveEP);
+                    BufferRicevuti.Add(Encoding.ASCII.GetString(dataReceived));
+                }
+                catch (Exception)
+                {
+                }
             }
         }
         public string prendi()
@@ -74,7 +75,6 @@ namespace Temp
                 catch (Exception)
                 {
                 }
-                Thread.Sleep(1);
             }
         }
     }

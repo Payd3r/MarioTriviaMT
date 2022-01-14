@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -99,14 +100,10 @@ namespace Temp
                 scelta = 4;
             if (scelta == 0)
                 scelta = rnd.Next(1, 5);
-            indovina();
-            string s = c.prendi();//aspetto di sapere cos'ha fatto esterno
-            if (s.ElementAt(0) == 'R')
-                if (s.Split(';')[1] == "v")
-                    //anche l'altro ha azzeccato
-                    Uesterno.numMonete += 10;
-            mappa.Show();
-            this.Close();
+            Thread temp = new Thread(indovina);
+            temp.Start();
+            Thread t = new Thread(controllaEsterno);
+            t.Start();
         }
         private void indovina()
         {
@@ -121,6 +118,19 @@ namespace Temp
                 MessageBox.Show("Hai sbagliato...");
                 c.BufferInviare.Add("R;" + "f");
             }
+        }
+        private void controllaEsterno()
+        {
+            string s = c.prendi();//aspetto di sapere cos'ha fatto esterno
+            if (s.ElementAt(0) == 'R')
+                if (s.Split(';')[1] == "v")
+                    //anche l'altro ha azzeccato
+                    Uesterno.numMonete += 10;
+            this.Dispatcher.Invoke(() =>
+            {
+                mappa.Show();
+                this.Close();
+            });
         }
     }
 }

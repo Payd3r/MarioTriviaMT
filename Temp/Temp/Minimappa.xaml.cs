@@ -30,19 +30,6 @@ namespace Temp
         {
             InitializeComponent();
         }
-        private void ascolta()
-        {
-            while (true)
-                while (!Ulocale.turno)
-                {
-                    string s = c.prendi();
-                    if (s.ElementAt(0) == 's')
-                    {
-                        estrazione = Convert.ToInt32(s.Split(';')[1]);
-                        fai();
-                    }
-                }
-        }
 
         public Minimappa(string nome1, string skin1, string nome2, string skin2, Condivisa cond)
         {
@@ -72,12 +59,9 @@ namespace Temp
             //inserisco informazioni utente locale
             Ulocale = new Utente(nome1, skin1);
             //richiedi informazioni per crare l'altro utente(nick, skin, turno)
-            string s = "p;andrea;2";
-            if (s.ElementAt(0) == 'p')
-            {
-                string[] vet = s.Split(';');
+            string[] vet = c.prendi().Split(';');
+            if (vet[0] == "p")           
                 Uesterno = new Utente(vet[1], vet[2]);
-            }
             else
             {
                 MessageBox.Show("Errore mancano le info!");
@@ -88,6 +72,24 @@ namespace Temp
             inizializeParteVisiva();
             Thread t = new Thread(ascolta);
             t.Start();
+        }
+        private void ascolta()
+        {
+            //quando non e' il mio turno aspetto le informazioni per muovermi
+            while (true)
+                while (!Ulocale.turno)
+                {
+                    string s = c.prendi();
+                    if (s.ElementAt(0) == 's')
+                    {
+                        estrazione = Convert.ToInt32(s.Split(';')[1]);
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            fai();
+                        });                        
+                        Ulocale.turno = true;
+                    }
+                }
         }
         private void inizializeParteVisiva()
         {
@@ -130,7 +132,7 @@ namespace Temp
         }
         private void fai()
         {
-            int num = muoviPersonaggi(estrazione);
+            int num = muoviPersonaggi(2);
             if (num == -1)
             {
                 MessageBox.Show("Gioco finito!");
@@ -275,10 +277,10 @@ namespace Temp
                     MessageBox.Show("Hai vinto 10 monete!");
                 }
             }
-            else if (posizione == 3 || posizione == 8 || posizione == 15 || posizione == 24 || posizione == 28 || posizione == 36 || posizione == 53 || posizione == 61)
+            else if (posizione == 113 || posizione == 8 || posizione == 15 || posizione == 24 || posizione == 28 || posizione == 36 || posizione == 53 || posizione == 61)
                 //se pos = 3,8,15,24,28,36,53,61 -> non faccio niente
                 MessageBox.Show("Salti questo turno!");
-            else if (posizione == 9 || posizione == 14 || posizione == 27 || posizione == 31 || posizione == 34 || posizione == 54 || posizione == 62)
+            else if (posizione == 3 || posizione == 14 || posizione == 27 || posizione == 31 || posizione == 34 || posizione == 54 || posizione == 62)
             {
                 //se pos =  9,14,27,31,34,54,62 -> apro il form del minigame corrispondente
                 //            1) Melanzane
@@ -289,7 +291,7 @@ namespace Temp
                 //            6) Tris
                 switch (posizione)
                 {
-                    case 9:
+                    case 3:
                         GameMelanzane a = new GameMelanzane(Ulocale, Uesterno, c, this);
                         a.Show();
                         break;
