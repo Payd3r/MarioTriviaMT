@@ -31,7 +31,6 @@ namespace Temp.Minigames
         int vittoria = 0;
         string[] arr;
         int scelta;
-        
         public GameTris()
         {
             InitializeComponent();
@@ -40,7 +39,6 @@ namespace Temp.Minigames
         {
             InitializeComponent();
             Ulocale = a;
-            
             Uesterno = b;
             stopWatch = new Stopwatch();
             dispatcherTimer = new DispatcherTimer();
@@ -62,9 +60,6 @@ namespace Temp.Minigames
             mappa = ma;
             scelta = 0;
             arr = new string[] { "", "", "", "", "", "", "", "", "" };
-
-           
-            
         }
         void dt_Tick(object sender, EventArgs e)
         {
@@ -92,27 +87,21 @@ namespace Temp.Minigames
             btn9.Visibility = Visibility.Visible;
             content.Content = "Seleziona la tua mossa in 10 sec";
             secondi.Content = "";
-            
         }
         private void gioca()
         {
-             vittoria = 0;
-
-
+            vittoria = 0;
             if (Ulocale.turno)
             {
                 content.Content = "Scegli la tua mossa! Entro ";
-
-
                 //aspetto il messaggio e aggiorno i punti dell'avversario
                 c.BufferInviare.Add("T;" + scelta);
                 Ulocale.turno = false;
-                arr[scelta-1] = "o";
+                arr[scelta - 1] = "o";
                 if (scelta == 1)
                 {
                     btn1.IsEnabled = false;
                     btn1.Content = "o";
-                    
                 }
                 if (scelta == 2)
                 {
@@ -158,10 +147,10 @@ namespace Temp.Minigames
             }
             else
             {
-                 string[] s = c.prendi().Split(';');
-                 scelta = Convert.ToInt32(s[1]);
+                string[] s = c.prendi().Split(';');
+                scelta = Convert.ToInt32(s[1]);
                 Ulocale.turno = true;
-                arr[scelta-1] = "x";
+                arr[scelta - 1] = "x";
                 if (scelta == 1)
                 {
                     btn1.IsEnabled = false;
@@ -208,79 +197,60 @@ namespace Temp.Minigames
                     btn9.Content = "x";
                 }
             }
-           
-
         }
 
         private int CheckWin()
         {
-            if (arr[1-1] == arr[2 - 1] && arr[2 - 1] == arr[3 - 1] && arr[2 - 1] !="")
-            {
+            if (arr[1 - 1] == arr[2 - 1] && arr[2 - 1] == arr[3 - 1] && arr[2 - 1] != "")
                 if (arr[2 - 1] == "o")
                     return 1;
                 else
                     return 2;
-            }
             //Winning Condition For Second Row
             else if (arr[4 - 1] == arr[5 - 1] && arr[5 - 1] == arr[6 - 1] && arr[5 - 1] != "")
-            {
                 if (arr[5 - 1] == "o")
                     return 1;
                 else
                     return 2;
-            }
             //Winning Condition For Third Row
             else if (arr[6 - 1] == arr[7 - 1] && arr[7 - 1] == arr[8 - 1] && arr[7 - 1] != "")
-            {
                 if (arr[7 - 1] == "o")
                     return 1;
                 else
                     return 2;
-            }
             else if (arr[1 - 1] == arr[4 - 1] && arr[4 - 1] == arr[7 - 1] && arr[4 - 1] != "")
-            {
                 if (arr[4 - 1] == "o")
                     return 1;
                 else
                     return 2;
-            }
             //Winning Condition For Second Column
             else if (arr[2 - 1] == arr[5 - 1] && arr[5 - 1] == arr[8 - 1] && arr[5 - 1] != "")
-            {
                 if (arr[5 - 1] == "o")
                     return 1;
                 else
                     return 2;
-            }
             //Winning Condition For Third Column
             else if (arr[3 - 1] == arr[6 - 1] && arr[6 - 1] == arr[9 - 1] && arr[6 - 1] != "")
-            {
                 if (arr[6 - 1] == "o")
                     return 1;
                 else
                     return 2;
-            }
             else if (arr[1 - 1] == arr[5 - 1] && arr[5 - 1] == arr[9 - 1] && arr[5 - 1] != "")
-            {
                 if (arr[5 - 1] == "o")
                     return 1;
                 else
                     return 2;
-            }
             else if (arr[3 - 1] == arr[5 - 1] && arr[5 - 1] == arr[7 - 1] && arr[5 - 1] != "")
-            {
                 if (arr[5 - 1] == "o")
                     return 1;
                 else
                     return 2;
-            }
             else
                 return 0;
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
-
             scelta = 1;
             gioca();
             vittoria = CheckWin();
@@ -298,12 +268,10 @@ namespace Temp.Minigames
                 mappa.Show();
                 this.Hide();
             }
-
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
-
             scelta = 2;
             gioca();
             vittoria = CheckWin();
@@ -322,10 +290,8 @@ namespace Temp.Minigames
                 this.Hide();
             }
         }
-
         private void btn3_Click(object sender, RoutedEventArgs e)
         {
-
             scelta = 3;
             gioca();
             vittoria = CheckWin();
@@ -343,11 +309,9 @@ namespace Temp.Minigames
                 mappa.Show();
                 this.Hide();
             }
-        }
-
+        }               
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
-
             scelta = 4;
             gioca();
             vittoria = CheckWin();
@@ -366,10 +330,8 @@ namespace Temp.Minigames
                 this.Hide();
             }
         }
-
         private void btn5_Click(object sender, RoutedEventArgs e)
         {
-
             scelta = 5;
             gioca();
             vittoria = CheckWin();
@@ -388,10 +350,8 @@ namespace Temp.Minigames
                 this.Hide();
             }
         }
-
         private void btn6_Click(object sender, RoutedEventArgs e)
         {
-
             scelta = 6;
             gioca();
             vittoria = CheckWin();
@@ -413,7 +373,6 @@ namespace Temp.Minigames
 
         private void btn7_Click(object sender, RoutedEventArgs e)
         {
-
             scelta = 7;
             gioca();
             vittoria = CheckWin();
@@ -435,7 +394,6 @@ namespace Temp.Minigames
 
         private void btn8_Click(object sender, RoutedEventArgs e)
         {
-
             scelta = 8;
             gioca();
             vittoria = CheckWin();
@@ -457,7 +415,7 @@ namespace Temp.Minigames
 
         private void btn9_Click(object sender, RoutedEventArgs e)
         {
-
+        {
             scelta = 9;
             gioca();
             vittoria = CheckWin();

@@ -60,56 +60,40 @@ namespace Temp.Minigames
             btn4.Visibility = Visibility.Hidden;
             Ulocale.turno = true;
             if (Ulocale.turno)
-            {
                  c.BufferInviare.Add("P;" + creavettore());
-                
-            }
-
             else
             {
                 string[] messa = c.prendi().Split(';');
                 if (messa[0] == "P")
-                {
                     vettore = messa[1].Split(',');
-                }
             }
-
-
-
-            
         }
         private string creavettore()
         {
             s = "P;";
-
             for (int i = 0; i < 4; i++)
             {
-
                 Random rnd = new Random();
                 estrazione = rnd.Next(1, 5);
                 if (estrazione == 1)
                 {
                     vettore[i] = "1";
                     s += "1,";
-
                 }
                 if (estrazione == 2)
                 {
                     vettore[i] = "2";
                     s += "2,";
-
                 }
                 if (estrazione == 3)
                 {
                     vettore[i] = "3";
                     s += "3,";
-
                 }
                 if (estrazione == 4)
                 {
                     vettore[i] = "4";
                     s += "4,";
-
                 }
             }
             return s;
@@ -137,16 +121,13 @@ namespace Temp.Minigames
             secondi.Content = "";
             if(i==0)
             gioca();
-           
         }
         void gioca()
         {
-
             if (vettore[i] == "1")
             {
                 BitmapImage bitmap = new BitmapImage();
                 //principale
-
                 img1.Source = null;
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\freccia2.png");
@@ -224,14 +205,8 @@ namespace Temp.Minigames
                 img1.Source = bitmap;
             }
 
-            content.Content = "Scegli la tua mossa! Entro ";
-            
+            content.Content = "Scegli la tua mossa! Entro ";            
             i++;
-            //potrebbe bloccare il thread corrente quindi non funzionano i bottoni
-
-
-
-            
         }
 
         private void btn3_Click(object sender, RoutedEventArgs e)
@@ -248,13 +223,9 @@ namespace Temp.Minigames
             {
                 scelta = 3;
                 if (scelta == Convert.ToInt32(vettore[i]))
-                {
                     Ulocale.numMonete += 2;
-                }
                 else
-                {
                     Ulocale.numMonete -= 2;
-                }
                 gioca();
             }
         }
@@ -272,13 +243,9 @@ namespace Temp.Minigames
             {
                 scelta = 1;
                 if (scelta == Convert.ToInt32(vettore[i]))
-                {
                     Ulocale.numMonete += 2;
-                }
                 else
-                {
                     Ulocale.numMonete -= 2;
-                }
                 gioca();
             }
         }
@@ -297,13 +264,9 @@ namespace Temp.Minigames
             {
                 scelta = 4;
                 if (scelta == Convert.ToInt32(vettore[i]))
-                {
                     Ulocale.numMonete += 2;
-                }
                 else
-                {
                     Ulocale.numMonete -= 2;
-                }
                 gioca();
             }
         }
@@ -322,13 +285,9 @@ namespace Temp.Minigames
             {
                 scelta = 2;
                 if (scelta == Convert.ToInt32(vettore[i]))
-                {
                     Ulocale.numMonete += 2;
-                }
                 else
-                {
                     Ulocale.numMonete -= 2;
-                }
                 gioca();
             }
         }

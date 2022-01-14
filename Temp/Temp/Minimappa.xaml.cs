@@ -30,6 +30,19 @@ namespace Temp
         {
             InitializeComponent();
         }
+        private void ascolta()
+        {
+            while (true)
+                while (!Ulocale.turno)
+                {
+                    string s = c.prendi();
+                    if (s.ElementAt(0) == 's')
+                    {
+                        estrazione = Convert.ToInt32(s.Split(';')[1]);
+                        fai();
+                    }
+                }
+        }
 
         public Minimappa(string nome1, string skin1, string nome2, string skin2, Condivisa cond)
         {
@@ -47,6 +60,8 @@ namespace Temp
             Ulocale.turno = false;
             //inizializzazione parte visiva
             inizializeParteVisiva();
+            Thread t = new Thread(ascolta);
+            t.Start();
         }
         public Minimappa(string nome1, string skin1, Condivisa cond)
         {
@@ -71,6 +86,8 @@ namespace Temp
             //imposto il turno in base a chi ha richiesto la connessione
             Ulocale.turno = true;
             inizializeParteVisiva();
+            Thread t = new Thread(ascolta);
+            t.Start();
         }
         private void inizializeParteVisiva()
         {
@@ -109,15 +126,7 @@ namespace Temp
                 Ulocale.turno = false;
             }
             else
-            {
                 MessageBox.Show("Non e' il tuo turno!");
-                string s = c.prendi();
-                if (s.ElementAt(0) == 's')
-                {
-                    estrazione = Convert.ToInt32(s.Split(';')[1]);
-                    fai();
-                }
-            }
         }
         private void fai()
         {
@@ -152,13 +161,9 @@ namespace Temp
                         Uesterno.posMappa = 28;
                     }
                     else if (Ulocale.posMappa == 4)
-                    {
                         return (num - i) - 1;
-                    }
                     else if (Ulocale.posMappa == 21)
-                    {
                         return (num - i) - 1;
-                    }
                 }
                 if (!check)
                     estrazione = 0;
@@ -243,6 +248,7 @@ namespace Temp
             }
             else if (posizione == 50)
             {
+                //pos 50
                 Canvas.SetTop(skin1, 10);
                 Canvas.SetLeft(skin1, 207);
                 Canvas.SetTop(skin2, 10);
@@ -250,6 +256,7 @@ namespace Temp
             }
             else if (posizione == 60)
             {
+                //pos 60
                 Canvas.SetTop(skin1, 273);
                 Canvas.SetLeft(skin1, 1030);
                 Canvas.SetTop(skin2, 273);
@@ -269,10 +276,8 @@ namespace Temp
                 }
             }
             else if (posizione == 3 || posizione == 8 || posizione == 15 || posizione == 24 || posizione == 28 || posizione == 36 || posizione == 53 || posizione == 61)
-            {
                 //se pos = 3,8,15,24,28,36,53,61 -> non faccio niente
                 MessageBox.Show("Salti questo turno!");
-            }
             else if (posizione == 9 || posizione == 14 || posizione == 27 || posizione == 31 || posizione == 34 || posizione == 54 || posizione == 62)
             {
                 //se pos =  9,14,27,31,34,54,62 -> apro il form del minigame corrispondente
@@ -317,8 +322,6 @@ namespace Temp
                 Domande a = new Domande(Ulocale, Uesterno, c, this);
                 a.Show();
                 this.Hide();
-
-
             }
             else if (posizione == 11 || posizione == 18 || posizione == 23 || posizione == 26 || posizione == 35 || posizione == 51 || posizione == 56)
             {

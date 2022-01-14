@@ -52,22 +52,14 @@ namespace Temp.Minigames
             content.Content = "Il minigioco inizia a 10 sec ";
             dispatcherTimer.Tick += new EventHandler(dt_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1, 0);
-           
             if (Ulocale.turno)
-            {
                 c.BufferInviare.Add("P;" + creavettore());
-            }
-            
             else
             {
                 string[] s = c.prendi().Split(';');
-                 if (s[0] == "P")
-                   vettore = s[1].Split(',');
+                if (s[0] == "P")
+                    vettore = s[1].Split(',');
             }
-
-
-
-
         }
 
         void dt_Tick(object sender, EventArgs e)
@@ -93,24 +85,21 @@ namespace Temp.Minigames
             btn6.Visibility = Visibility.Visible;
             content.Content = "Seleziona la tua mossa in 10 sec";
             secondi.Content = "";
-            if(turno==0)
-            gioca();
+            if (turno == 0)
+                gioca();
         }
         private string creavettore()
         {
             int numV = 0;
             s = "P;";
-
             for (int i = 0; i < 6; i++)
             {
-
                 Random rnd = new Random();
                 estrazione = rnd.Next(0, 2);
                 if (estrazione == 1 && numV < 2)
                 {
                     vettore[i] = "f";
                     s += "f,";
-
                     numV++;
                 }
                 else
@@ -123,20 +112,15 @@ namespace Temp.Minigames
             {
                 string riprova = creavettore();
                 return riprova;
-            }else
-            return s;
+            }
+            else
+                return s;
         }
-
-
         private void gioca()
         {
-
-
             if (Ulocale.turno)
             {
                 content.Content = "Scegli la tua mossa! Entro ";
-
-
                 //aspetto il messaggio e aggiorno i punti dell'avversario
                 c.BufferInviare.Add("E;" + scelta);
                 Ulocale.turno = false;
@@ -155,7 +139,6 @@ namespace Temp.Minigames
                     scelta = Convert.ToInt32(mess[1]);
                 Ulocale.turno = true;
             }
-
             if (scelta != 0)
             {
                 if (scelta == 1)
@@ -163,20 +146,17 @@ namespace Temp.Minigames
                     btn1.Visibility = Visibility.Hidden;
                     BitmapImage bitmap = new BitmapImage();
                     //principale
-
                     i1.Source = null;
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\pesce.png");
                     bitmap.EndInit();
                     i1.Source = bitmap;
                 }
-
                 if (scelta == 2)
                 {
                     btn2.Visibility = Visibility.Hidden;
                     BitmapImage bitmap = new BitmapImage();
                     //principale
-
                     i2.Source = null;
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\pesce.png");
@@ -188,7 +168,6 @@ namespace Temp.Minigames
                     btn3.Visibility = Visibility.Hidden;
                     BitmapImage bitmap = new BitmapImage();
                     //principale
-
                     i3.Source = null;
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\pesce.png");
@@ -200,7 +179,6 @@ namespace Temp.Minigames
                     btn4.Visibility = Visibility.Hidden;
                     BitmapImage bitmap = new BitmapImage();
                     //principale
-
                     i4.Source = null;
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\pesce.png");
@@ -212,7 +190,6 @@ namespace Temp.Minigames
                     btn5.Visibility = Visibility.Hidden;
                     BitmapImage bitmap = new BitmapImage();
                     //principale
-
                     i5.Source = null;
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\pesce.png");
@@ -224,24 +201,20 @@ namespace Temp.Minigames
                     btn6.Visibility = Visibility.Hidden;
                     BitmapImage bitmap = new BitmapImage();
                     //principale
-
                     i6.Source = null;
                     bitmap.BeginInit();
                     bitmap.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + "\\File\\pesce.png");
                     bitmap.EndInit();
                     i6.Source = bitmap;
                 }
-
-
             }
             else
             {
-                 c.BufferInviare.Add("e;" + "perso");
+                c.BufferInviare.Add("e;" + "perso");
                 MessageBox.Show("Hai perso! Non hai scelto in tempo");
                 Ulocale.numMonete -= 10;
                 Uesterno.numMonete += 10;
                 turno = 5;
-
             }
             turno++;
             if (turno > 5)
@@ -249,14 +222,11 @@ namespace Temp.Minigames
                 mappa.Show();
                 this.Hide();
             }
-
         }
-
         private void btn1_Click(object sender, RoutedEventArgs e)
         {
             if (turno == 6)
             {
-
                 mappa.Show();
                 this.Hide();
             }
@@ -283,15 +253,12 @@ namespace Temp.Minigames
                 }
                 gioca();
             }
-
         }
 
         private void btn2_Click(object sender, RoutedEventArgs e)
         {
-
             if (turno == 6)
             {
-
                 mappa.Show();
                 this.Hide();
             }
@@ -322,10 +289,8 @@ namespace Temp.Minigames
 
         private void btn3_Click(object sender, RoutedEventArgs e)
         {
-
             if (turno == 6)
             {
-
                 mappa.Show();
                 this.Hide();
             }
@@ -356,10 +321,8 @@ namespace Temp.Minigames
 
         private void btn4_Click(object sender, RoutedEventArgs e)
         {
-
             if (turno == 6)
             {
-
                 mappa.Show();
                 this.Hide();
             }
@@ -392,7 +355,6 @@ namespace Temp.Minigames
         {
             if (turno == 6)
             {
-
                 mappa.Show();
                 this.Hide();
             }
@@ -423,17 +385,15 @@ namespace Temp.Minigames
 
         private void btn6_Click(object sender, RoutedEventArgs e)
         {
-
             if (turno == 6)
             {
-
                 mappa.Show();
                 this.Hide();
             }
             else
             {
                 scelta = 6;
-               if (vettore[scelta - 1] == "f" && Ulocale.turno)
+                if (vettore[scelta - 1] == "f" && Ulocale.turno)
                 {
                     turno = 5;
                     MessageBox.Show("Hai perso!");

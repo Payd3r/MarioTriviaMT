@@ -8,9 +8,8 @@ namespace Temp
 {
     public class CDomanda
     {
-       public string domanda;
+        public string domanda;
         public string rispostaGiusta;
-       public List<string> risposte=new List<string>();
-
+        public List<string> risposte = new List<string>();
     }
 }
